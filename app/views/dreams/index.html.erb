@@ -1,9 +1,11 @@
 <h1>Dreams</h1>
 <% @dreams.each do |dream| %>
 
-<p><%= dream.title %></p>
+
+<p><%= link_to dream.title, dream %> <%= dream.user_id %></p>
 
 <% end %>
 
+<%= link_to 'My Dreams', user_dreams_path %>
 
 <%= link_to "Create new dream", new_dream_path %>

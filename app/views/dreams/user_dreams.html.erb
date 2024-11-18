@@ -1,0 +1,11 @@
+<h1><%= current_user.username %> Dreams</h1>
+
+<% if @dreams.any? %>
+  <% @dreams.each do |dream| %>
+    <p><%= link_to dream.title, dream %> <%= dream.user_id %></p>
+  <% end %>
+<% else %>
+  <p>You don't have any dreams yet.</p>
+<% end %>
+
+<%= link_to 'Create a New Dream', new_dream_path %>
