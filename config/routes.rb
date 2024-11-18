@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     member do
       post :update
       get :dreams, to: 'dreams#userDreams'
-      get :orders, to: 'orders#index'
+      get :bookings, to: 'bookings#index'
     end
   end
 
@@ -33,9 +33,9 @@ Rails.application.routes.draw do
       delete :delete, action: :destroy
     end
 
-    resources :orders, only: [:new, :create, :index], module: :dreams
+    resources :bookings, only: [:new, :create, :index], module: :dreams
   end
 
-  # Orders routes
-  resources :orders, only: [:show]
+  # Bookings routes
+  resources :bookings, only: [:show]
 end
