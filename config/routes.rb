@@ -23,10 +23,8 @@ Rails.application.routes.draw do
   end
 
   # Dreams routes
-  resources :dreams do
-    collection do
-      get :new
-    end
+  resources :dreams, only: [:index, :new, :create, :show] do
+
 
     member do
       get :edit
