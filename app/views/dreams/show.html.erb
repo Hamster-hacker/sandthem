@@ -1,0 +1,9 @@
+<h2><%= @dream.title%></h2>
+<p><%= @dream.description%></p>
+<p><%= @dream.category%></p>
+<img src="<%= @dream.image_url%>" alt="<%= @dream.title%>">
+<p><%= @dream.price%></p>
+<p><%= @dream.duration%></p>
+<p><%= @dream.rating%></p>
+
+<%= link_to "Back to HomePage", dreams_path%>
