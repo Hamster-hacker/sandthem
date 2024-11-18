@@ -3,7 +3,11 @@ class DreamsController < ApplicationController
   def index
     @dreams = Dream.all
   end
-
+  
+   def show
+    @dream = Dream.find(params[:id])
+  end
+  
 
   def new
     @dream = Dream.new
@@ -26,5 +30,4 @@ class DreamsController < ApplicationController
   private
   def dream_params
     params.require(:dream).permit(:title, :description, :category, :price, :image_url, :duration, :rating)
-  end
 end
