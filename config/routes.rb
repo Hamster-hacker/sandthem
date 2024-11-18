@@ -8,4 +8,34 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  # Users routes
+  resources :users, only: [:show] do
+    collection do
+      post :register
+      post :login
+    end
+
+    member do
+      post :update
+      get :dreams, to: 'dreams#userDreams'
+      get :orders, to: 'orders#index'
+    end
+  end
+
+  # Dreams routes
+  resources :dreams do
+    collection do
+      get :new
+    end
+
+    member do
+      get :edit
+      delete :delete, action: :destroy
+    end
+
+    resources :orders, only: [:new, :create, :index], module: :dreams
+  end
+
+  # Orders routes
+  resources :orders, only: [:show]
 end
