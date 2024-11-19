@@ -1,5 +1,4 @@
 class DreamsController < ApplicationController
-
   def index
     @dreams = Dream.all
   end
@@ -10,7 +9,6 @@ class DreamsController < ApplicationController
 
   def new
     @dream = Dream.new
-
   end
 
   def edit
@@ -45,12 +43,12 @@ class DreamsController < ApplicationController
   end
 
   def user_dreams
-    @dreams = current_user.dreams 
+    @dreams = current_user.dreams
   end
 
   private
+
   def dream_params
     params.require(:dream).permit(:title, :description, :category, :price, :image_url, :duration, :rating)
-
   end
 end

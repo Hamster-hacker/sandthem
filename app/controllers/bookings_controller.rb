@@ -1,4 +1,5 @@
 class BookingsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_dream
 
   def new
@@ -23,6 +24,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    # params.require(:booking).permit(current_user, :dream_id)
+    params.require(:booking).permit(:dream_id)
   end
 end
