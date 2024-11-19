@@ -1,0 +1,28 @@
+<h2><%= @dream.title%></h2>
+<p><%= @dream.description%></p>
+<p>Category: <%= @dream.category %></p>
+<img src="<%= @dream.image_url%>" alt="<%= @dream.title%>" style="width:300px">
+<p><strong>Price:</strong> <%= number_to_currency(@dream.price, unit: "€") %></p>
+
+
+<p>
+  <% hours = @dream.duration / 60 %>
+  <% minutes = @dream.duration % 60 %>
+  <% if @dream.duration > 60 %>
+  <p>Duration: <%= "#{hours} hour#{'s' if hours != 1} #{minutes} minutes" %></p>
+  <% else %>
+<p>Duration: <%= pluralize(@dream.duration, "minute") %> </p>
+  <% end %>
+</p>
+
+<p>Rating: <%= @dream.rating %> / 5</p>
+
+<%= link_to "Back to HomePage", dreams_path%>
+<%= link_to dream_path(@dream),
+                      data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                      class: "text-danger", title: "Delete Dream" do %>
+                      <i class="fas fa-trash-alt"></i>
+          <% end %>
+<%= link_to edit_dream_path(@dream), class: "text-warning me-3", title: "Edit dream" do %>
+            <i class="fas fa-edit"></i>
+          <% end %>

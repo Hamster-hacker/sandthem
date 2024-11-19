@@ -15,9 +15,9 @@ puts "Database cleaned!"
 
 # Create users
 puts "Creating users..."
-user1 = User.create!(username: "DreamSeeker1")
-user2 = User.create!(username: "NightOwl22")
-user3 = User.create!(username: "LucidDreamer")
+user1 = User.create!(username: "DreamSeeker1", email: "123456A@gmail.com", password: "123456")
+user2 = User.create!(username: "NightOwl22", email: "123456B@gmail.com", password: "123456")
+user3 = User.create!(username: "LucidDreamer", email: "123456C@gmail.com", password: "123456")
 puts "Users created successfully!"
 
 dreams = [
@@ -67,7 +67,7 @@ dreams = [
   {
     title: "Traveling Through Time to Ancient Egypt",
     description: "Journey back to the time of pharaohs and pyramids. Explore ancient temples and unravel the mysteries of a bygone civilization under the golden desert sun.",
-    category: "History",
+    category: "Horror",
     image_url: "https://images.unsplash.com/photo-1648139210431-f5a62bc3f126?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 55.00,
     duration: 40,
