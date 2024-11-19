@@ -5,6 +5,8 @@ class DreamsController < ApplicationController
 
   def show
     @dream = Dream.find(params[:id])
+    @average_rating = @dream.reviews.average(:rating).to_f
+    @user_review = @dream.reviews.find_by(user_id: current_user.id)
     @booking = Booking.new
   end
 

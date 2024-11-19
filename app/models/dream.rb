@@ -16,7 +16,6 @@ class Dream < ApplicationRecord
   validates :image_url, presence: true
   validates :price, numericality: { greater_than_or_equal_to: 0 }, allow_blank: true
   validates :duration, numericality: { only_integer: true, greater_than: 0, message: " must be a valid number" }
-  validates :rating, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 5 }
 
   def is_owner?(user)
     self.user == user

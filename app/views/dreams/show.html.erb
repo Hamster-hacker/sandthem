@@ -16,14 +16,26 @@
   <% end %>
 </p>
 
-<p>Rating: <%= @dream.rating %> / 5</p>
 <div>
-  <% if current_user && @dream.bookings.exists?(user_id: current_user.id) %>
+  <% if @average_rating > 0 %>
+  <p>Rating: <%= @average_rating.round(1) %> / 5.0</p>
+  <% end %>
+<div>
+
+<div>
+  <% if current_user && @dream.bookings.exists?(user_id: current_user.id) && @user_review.nil? %>
   <%= link_to new_dream_review_path(@dream), class: "btn btn-secondary", title: "Add a Review" do %>
       Add a Review
     <% end %>
+  <% elsif !@user_review.nil? %>
+    <div class="user-review">
+      <h4>Your Review</h4>
+      <p><strong>Title:</strong> <%= @user_review.title %></p>
+      <p><strong>Description:</strong> <%= @user_review.description %></p>
+      <p><strong>Rating:</strong> <%= @user_review.rating %> / 5.0</p>
+    </div>
   <% end %>
-<div>
+</div>
 
 <% if !@dream.is_owner?(current_user) %>
     <%= render "booking", dream: @dream, booking: @booking %>
