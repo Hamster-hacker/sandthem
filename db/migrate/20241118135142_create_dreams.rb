@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/MethodLength
 class CreateDreams < ActiveRecord::Migration[7.1]
   def change
     create_table :dreams do |t|
@@ -14,3 +15,4 @@ class CreateDreams < ActiveRecord::Migration[7.1]
     end
   end
 end
+# rubocop:enable Metrics/MethodLength

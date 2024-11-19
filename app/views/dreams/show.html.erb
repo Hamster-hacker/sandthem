@@ -4,7 +4,6 @@
 <img src="<%= @dream.image_url%>" alt="<%= @dream.title%>" style="width:300px">
 <p><strong>Price:</strong> <%= number_to_currency(@dream.price, unit: "€") %></p>
 
-
 <p>
   <% hours = @dream.duration / 60 %>
   <% minutes = @dream.duration % 60 %>
@@ -22,15 +21,11 @@
       Add a Review
     <% end %>
   <% end %>
-
-
-
-
 <div>
 
-<!-- Render the booking form -->
-<%= render "booking", dream: @dream, booking: @booking %>
-
+<% if !@dream.is_owner?(current_user) %>
+    <%= render "booking", dream: @dream, booking: @booking %>
+<% end %>
 
 </div>
 
