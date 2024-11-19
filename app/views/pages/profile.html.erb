@@ -1,0 +1,34 @@
+<h1>Welcome, <%= @user.username %>!</h1>
+
+<div class="my-5">
+  <h2>Your Created Dreams</h2>
+  <ul class="list-group">
+    <% if @created_dreams.any? %>
+      <% @created_dreams.each do |dream| %>
+        <li class="list-group-item">
+          <%= link_to dream.title, dream_path(dream) %>
+        </li>
+      <% end %>
+    <% else %>
+      <li class="list-group-item text-muted">You haven't created any dreams yet.</li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="my-5">
+  <h2>Your Booking History</h2>
+  <ul class="list-group">
+    <% if @bookings.any? %>
+      <% @bookings.each do |booking| %>
+        <li class="list-group-item">
+          <p><strong>Dream:</strong> <%= link_to booking.dream.title, dream_path(booking.dream) %></p>
+          <p><strong>Dates:</strong> <%= booking.start_date.strftime('%b %d, %Y') %> to <%= booking.end_date.strftime('%b %d, %Y') %></p>
+          <p><strong>Booking Made On:</strong> <%= booking.created_at.strftime('%b %d, %Y') %></p>
+        </li>
+      <% end %>
+    <% else %>
+      <li class="list-group-item text-muted">You haven't booked any dreams yet.</li>
+    <% end %>
+  </ul>
+</div>
+

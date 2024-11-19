@@ -23,6 +23,9 @@ Rails.application.routes.draw do
     end
   end
 
+
+  get 'profile', to: 'pages#profile', as: 'profile'
+
   # Dreams routes
   resources :dreams do
     collection do
