@@ -25,8 +25,13 @@ Rails.application.routes.draw do
 
   # Dreams routes
   #
-  resources :dreams
-  get 'my_dreams', to: 'dreams#user_dreams', as: 'user_dreams'
+  resources :dreams do
+    collection do
+      get 'my_dreams', to: 'dreams#user_dreams', as: 'user'
+    end
+
+    resources :bookings, only: [:new, :create]
+  end
 
   # resources :dreams do
 
@@ -40,5 +45,4 @@ Rails.application.routes.draw do
   # end
 
   # Bookings routes
-  resources :bookings, only: [:show]
 end

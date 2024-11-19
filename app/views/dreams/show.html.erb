@@ -17,12 +17,19 @@
 
 <p>Rating: <%= @dream.rating %> / 5</p>
 
-<%= link_to "Back to HomePage", dreams_path%>
-<%= link_to dream_path(@dream),
-                      data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
-                      class: "text-danger", title: "Delete Dream" do %>
-                      <i class="fas fa-trash-alt"></i>
-          <% end %>
-<%= link_to edit_dream_path(@dream), class: "text-warning me-3", title: "Edit dream" do %>
-            <i class="fas fa-edit"></i>
-          <% end %>
+
+<div>
+  <p><%= link_to "Make a Booking", dream_bookings_path(@dream), data: { turbo_method: :post }%></p>
+</div>
+
+<div>
+  <%= link_to "Back to HomePage", dreams_path%>
+  <%= link_to dream_path(@dream),
+                        data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                        class: "text-danger", title: "Delete Dream" do %>
+                        <i class="fas fa-trash-alt"></i>
+            <% end %>
+  <%= link_to edit_dream_path(@dream), class: "text-warning me-3", title: "Edit dream" do %>
+              <i class="fas fa-edit"></i>
+            <% end %>
+</div>
