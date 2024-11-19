@@ -13,9 +13,9 @@ class BookingsController < ApplicationController
     if params[:booking][:start_date].present?
       date_range = params[:booking][:start_date].split(" to ")
       @booking.start_date = date_range[0]
-      @booking.end_date = date_range[1]
+      @booking.end_date = date_range[1] || date_range[0]
     end
-    
+
     if @booking.save
       redirect_to dream_path(@dream), notice: 'This booking was successfully created.'
     else

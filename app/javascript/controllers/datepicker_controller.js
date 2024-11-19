@@ -10,7 +10,14 @@ export default class extends Controller {
       altFormat: "j F, Y",
       dateFormat: "Y-m-d",
       minDate: "today",
-      maxDate: new Date().fp_incr(14)
+      // maxDate: new Date().fp_incr(14)
+      onClose: (selectedDates) => {
+        // If only one date is selected, treat it as both start and end
+        if (selectedDates.length === 1) {
+          const singleDate = flatpickr.formatDate(selectedDates[0], "Y-m-d");
+          this.element.value = `${singleDate} to ${singleDate}`;
+        }
+      }
     })
   }
 }
