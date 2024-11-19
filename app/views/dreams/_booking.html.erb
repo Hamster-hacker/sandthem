@@ -1,0 +1,12 @@
+<%= simple_form_for [dream, booking], url: dream_bookings_path(dream) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :start_date, as: :string, input_html: { data: { controller: "datepicker" } }, label: "Select Date" %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Book Now", class: "btn btn-primary"%>
+  </div>
+<% end %>

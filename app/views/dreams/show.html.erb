@@ -18,22 +18,16 @@
 <p>Rating: <%= @dream.rating %> / 5</p>
 
 
+
+
+
 <div>
-  <p><%= link_to "Make a Booking", dream_bookings_path(@dream), data: { turbo_method: :post }%></p>
+
+<!-- Render the booking form -->
+<%= render "booking", dream: @dream, booking: @booking %>
+
+
 </div>
-
-
- <div class="col-md-4">
-      <h4 class="mb-4">Add a Review</h4>
-      <%= form_with(model: [@dream, @dream.dreams.new], local: true, class: "border p-3 rounded shadow-sm") do |form| %>
-        <div class="mb-3">
-          <%= form.text_area :period, class: "form-control", rows: 4, placeholder: "Write your review here..." %>
-        </div>
-        <div class="d-flex justify-content-end">
-          <%= form.submit "Post Review", class: "btn btn-primary" %>
-        </div>
-      <% end %>
-    </div>
 
 <div>
   <%= link_to "Back to HomePage", dreams_path%>
