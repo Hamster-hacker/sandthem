@@ -45,7 +45,7 @@ class DreamsController < ApplicationController
   end
 
   def user_dreams
-    @dreams = current_user.dreams 
+    @dreams = current_user.dreams
   end
 
   private
