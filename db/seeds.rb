@@ -8,6 +8,8 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+# rubocop:disable Metrics/LineLength
+
 puts "Cleaning up database..."
 User.destroy_all
 Dream.destroy_all
@@ -80,3 +82,5 @@ dreams = [
 Dream.create!(dreams)
 
 puts "Dreams created successfully!"
+
+# rubocop:enable Metrics/LineLength
