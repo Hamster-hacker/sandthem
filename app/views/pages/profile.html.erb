@@ -1,34 +1,55 @@
-<h1>Welcome, <%= @user.username %>!</h1>
+<h1>Welcome, <%= current_user.username %>!</h1>
 
-<div class="my-5">
-  <h2>Your Created Dreams</h2>
-  <ul class="list-group">
-    <% if @created_dreams.any? %>
-      <% @created_dreams.each do |dream| %>
-        <li class="list-group-item">
-          <%= link_to dream.title, dream_path(dream) %>
-        </li>
-      <% end %>
-    <% else %>
-      <li class="list-group-item text-muted">You haven't created any dreams yet.</li>
-    <% end %>
-  </ul>
+<div class="m-5">
+  <div class="row">
+
+    <div class="col-4 bg-light p-3 border">
+        <h4>Left Side</h4>
+        <p>This is the left side content.</p>
+        <p><%= current_user.username %></p>
+      </div>
+
+
+
+    <div class="col-8 bg-white p-3 border">
+
+        <div data-controller="toggle">
+          <button class="btn btn-success mb-3" data-action="click->toggle#fire">My dreams</button>
+          <div class="my-5 d-none" data-toggle-target="toggleableElement">
+            <h2>Your Created Dreams</h2>
+            <ul class="list-group">
+              <% if @created_dreams.any? %>
+                <% @created_dreams.each do |dream| %>
+                  <li class="list-group-item">
+                    <%= link_to dream.title, dream_path(dream) %>
+                  </li>
+                <% end %>
+              <% else %>
+                <li class="list-group-item text-muted" >You haven't created any dreams yet.</li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+
+        <div data-controller="toggle">
+          <button class="btn btn-success" data-action="click->toggle#fire">My History</button>
+          <div class="my-5 d-none" data-toggle-target="toggleableElement">
+            <h2>Your Booking History</h2>
+            <ul class="list-group">
+              <% if @bookings.any? %>
+                <% @bookings.each do |booking| %>
+                  <li class="list-group-item">
+                    <p><strong>Dream:</strong> <%= link_to booking.dream.title, dream_path(booking.dream) %></p>
+                    <p><strong>Dates:</strong> <%= booking.start_date.strftime('%b %d, %Y') %> to <%= booking.end_date.strftime('%b %d, %Y') %></p>
+                    <p><strong>Booking Made On:</strong> <%= booking.created_at.strftime('%b %d, %Y') %></p>
+                  </li>
+                <% end %>
+              <% else %>
+                <li class="list-group-item text-muted">You haven't booked any dreams yet.</li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+    </div>
+  </div>
 </div>
-
-<div class="my-5">
-  <h2>Your Booking History</h2>
-  <ul class="list-group">
-    <% if @bookings.any? %>
-      <% @bookings.each do |booking| %>
-        <li class="list-group-item">
-          <p><strong>Dream:</strong> <%= link_to booking.dream.title, dream_path(booking.dream) %></p>
-          <p><strong>Dates:</strong> <%= booking.start_date.strftime('%b %d, %Y') %> to <%= booking.end_date.strftime('%b %d, %Y') %></p>
-          <p><strong>Booking Made On:</strong> <%= booking.created_at.strftime('%b %d, %Y') %></p>
-        </li>
-      <% end %>
-    <% else %>
-      <li class="list-group-item text-muted">You haven't booked any dreams yet.</li>
-    <% end %>
-  </ul>
-</div>
-
