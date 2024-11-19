@@ -7,9 +7,15 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = @dream.bookings.new
+    @booking = @dream.bookings.new(booking_params)
     @booking.user_id = current_user.id
 
+    if params[:booking][:start_date].present?
+      date_range = params[:booking][:start_date].split(" to ")
+      @booking.start_date = date_range[0]
+      @booking.end_date = date_range[1]
+    end
+    
     if @booking.save
       redirect_to dream_path(@dream), notice: 'This booking was successfully created.'
     else
@@ -24,6 +30,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:dream_id)
+    params.require(:booking).permit(:dream_id, :start_date, :end_date)
   end
 end
