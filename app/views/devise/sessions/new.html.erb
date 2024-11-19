@@ -1,5 +1,5 @@
 <h2 class="text-center m-3 fw-light">Hello Dreamer</h2>
-
+<div class="registration-form">
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-inputs m-3">
     <%= f.input :email,
@@ -16,5 +16,5 @@
     <%= f.button :submit, "Log in", class: "btn btn-primary" %>
   </div>
 <% end %>
-
+</div>
 <p class="text-center mb-4 mt-3 t-none">Don't you have an account?<%= render "devise/shared/links" %></p>
