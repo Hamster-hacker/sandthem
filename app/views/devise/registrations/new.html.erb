@@ -6,6 +6,12 @@
 
   <div class="form-inputs">
     <div class="m-3" >
+      <%= f.input :username,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "username" }%>
+    </div>
+    <div class="m-3" >
       <%= f.input :email,
                   required: true,
                   autofocus: true,
