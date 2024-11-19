@@ -24,16 +24,20 @@ Rails.application.routes.draw do
   end
 
   # Dreams routes
-  resources :dreams, only: [:index, :new, :create, :show] do
+  #
+  resources :dreams
+  get 'my_dreams', to: 'dreams#user_dreams', as: 'user_dreams'
+
+  # resources :dreams do
 
 
-    member do
-      get :edit
-      delete :delete, action: :destroy
-    end
+  #   member do
+  #     get :edit
+  #     delete :delete, action: :destroy
+  #   end
 
-    resources :bookings, only: [:new, :create, :index], module: :dreams
-  end
+  #   resources :bookings, only: [:new, :create, :index], module: :dreams
+  # end
 
   # Bookings routes
   resources :bookings, only: [:show]
