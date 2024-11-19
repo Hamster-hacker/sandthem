@@ -24,21 +24,16 @@ Rails.application.routes.draw do
   end
 
   # Dreams routes
-  #
-  resources :dreams
-  get 'my_dreams', to: 'dreams#user_dreams', as: 'user_dreams'
+  resources :dreams do
+    collection do
+      get 'my_dreams', to: 'dreams#user_dreams', as: 'user'
+    end
 
-  # resources :dreams do
+    resources :bookings, only: %i[new create]
 
-
-  #   member do
-  #     get :edit
-  #     delete :delete, action: :destroy
-  #   end
-
-  #   resources :bookings, only: [:new, :create, :index], module: :dreams
-  # end
+    # Nested reviews routes
+    resources :reviews, only: [:new, :create]
+  end
 
   # Bookings routes
-  resources :bookings, only: [:show]
 end
