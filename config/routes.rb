@@ -30,11 +30,10 @@ Rails.application.routes.draw do
       get 'my_dreams', to: 'dreams#user_dreams', as: 'user'
     end
 
-    resources :bookings, only: [:new, :create]
+    resources :bookings, only: %i[new create]
   end
 
   # resources :dreams do
-
 
   #   member do
   #     get :edit
