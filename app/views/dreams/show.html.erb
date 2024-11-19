@@ -9,9 +9,11 @@
   <% hours = @dream.duration / 60 %>
   <% minutes = @dream.duration % 60 %>
   <% if @dream.duration > 60 %>
-  <p>Duration: <%= "#{hours} hour#{'s' if hours != 1} #{minutes} minutes" %></p>
+    <p>Duration: <%= "#{pluralize(hours, "hour")} #{pluralize(hours, "minute")} " %></p>
+  <% elsif @dream.duration < 60 %>
+    <p>Duration: <%= pluralize(@dream.duration, "minute") %> </p>
   <% else %>
-<p>Duration: <%= pluralize(@dream.duration, "minute") %> </p>
+    <p>Duration: <%= "#{pluralize(hours, "hour")}" %></p>
   <% end %>
 </p>
 
