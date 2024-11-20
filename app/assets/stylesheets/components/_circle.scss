@@ -1,0 +1,11 @@
+.circle {
+        width: 400px; /* Diameter of the circle */
+        height: 400px; /* Diameter of the circle */
+        background-color: #FD3FF7; /* Circle color */
+        filter: blur(70px); /* Blur effect */
+        border-radius: 50%; /* Makes it a circle */
+        position: absolute; /* Allows positioning relative to the window */
+        top: -100px; /* Adjust as needed to move it partially off-screen */
+        right: -100px; /* Adjust as needed to move it partially off-screen */
+        z-index: -1; /* Ensures it is behind other elements */
+      }
