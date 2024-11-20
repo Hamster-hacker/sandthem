@@ -7,4 +7,6 @@ pin "@hotwired/stimulus-loading", to: "stimulus-loading.js"
 pin_all_from "app/javascript/controllers", under: "controllers"
 pin "bootstrap", to: "bootstrap.min.js", preload: true
 pin "@popperjs/core", to: "popper.js", preload: true
-pin "flatpickr" # @4.6.13
+
+pin "flatpickr", to: "https://cdn.skypack.dev/flatpickr@4.6.13"
+pin "flatpickr/dist/flatpickr.min.css", to: "https://cdn.skypack.dev/flatpickr@4.6.13/dist/flatpickr.min.css"
