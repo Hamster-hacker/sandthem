@@ -10,6 +10,7 @@
         <%= f.input :category, collection: Dream::CATEGORIES, prompt: "Select a Category" %>
         <%= f.input :price, label: "Dream Price (in €)", input_html: { min: 0 } %>
         <%= f.input :duration, label: "Duration (in minutes)", input_html: { min: 0 } %>
+        <%= f.input :photo, as: :file %>
         <%= f.input :image_url, label: "Image URL" %>
       </div>
 

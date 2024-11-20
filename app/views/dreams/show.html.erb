@@ -4,7 +4,7 @@
       <h2 class="text-primary"><%= @dream.title %></h2>
       <p><%= @dream.description %></p>
       <p><strong>Category:</strong> <%= @dream.category %></p>
-      <img src="<%= @dream.image_url %>" alt="<%= @dream.title %>" class="img-fluid rounded" style="max-width: 300px;">
+      <img src="<%= @dream.photo.attached? ? cl_image_path(@dream.photo.key) :asset_path(@dream.image_url)%>" alt="<%= @dream.title %>" class="img-fluid rounded" style="max-width: 300px;">
       <p class="mt-3">
         <strong>Price:</strong>
         <%= number_to_currency(@dream.price, unit: "€") %>

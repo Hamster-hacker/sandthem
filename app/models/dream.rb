@@ -1,5 +1,7 @@
 # rubocop:disable Naming/PredicateName
 class Dream < ApplicationRecord
+  has_one_attached :photo
+
   belongs_to :user
 
   has_many :users, through: :bookings
@@ -14,7 +16,7 @@ class Dream < ApplicationRecord
   validates :category, presence: true, allow_blank: true
   validates :category, inclusion: { in: CATEGORIES, message: " invalid. Please select a valid category" }
   validates :price, presence: { message: " can't be blank" }
-  validates :image_url, presence: true
+  # validates :image_url, presence: true
   validates :price, numericality: { greater_than_or_equal_to: 0 }, allow_blank: true
   validates :duration, numericality: { only_integer: true, greater_than: 0, message: " must be a valid number" }
 
