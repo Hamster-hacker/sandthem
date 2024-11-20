@@ -14,10 +14,7 @@ class BookingsController < ApplicationController
       date_range = params[:booking][:start_date].split(" to ")
       @booking.start_date = date_range[0]
       @booking.end_date = date_range[1] || date_range[0]
-      days = (@booking.end_date - @booking.start_date).to_i + 1
-      price = days * @dream.price.to_f
-      price = price.round(5)
-    
+
     end
 
     if @booking.save

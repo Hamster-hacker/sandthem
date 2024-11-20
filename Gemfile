@@ -53,6 +53,9 @@ gem "sassc-rails"
 # user authencication gem
 gem "devise"
 
+# for claudinary
+gem "cloudinary"
+
 
 group :development, :test do
   gem "dotenv-rails"

@@ -1,4 +1,4 @@
-<%= simple_form_for [dream, booking], url: dream_bookings_path(dream), html: { class: "needs-validation" } do |f| %>
+<%= simple_form_for [dream, booking], url: dream_bookings_path(dream), html: { data: {controller: "price", "price-price-value": @dream.price }, class: "needs-validation" } do |f| %>
   <div class="card shadow p-4 mb-4 mx-auto" style="max-width: 400px;">
     <h4 class="card-title text-primary text-center">Book Your Dream</h4>
     <div class="card-body">
@@ -12,11 +12,11 @@
 
       <!-- Form inputs -->
       <div class="form-group mb-3">
-        <div class="w-75 mx-auto">
+        <div class="w-75 mx-auto" >
           <%= f.input :start_date,
                       as: :string,
                       input_html: {
-                        data: { controller: "datepicker", action: "focus->datepicker#show" },
+                        data: { controller: "datepicker", action: "focus->datepicker#show", action: "change->price#calculate", "price-target": "dates"},
                         class: "form-control"
                       },
                       label: "Select Date",
@@ -24,6 +24,8 @@
         </div>
       </div>
     </div>
+
+    <p data-price-target="result"></p>
 
     <!-- Form actions -->
     <div>
