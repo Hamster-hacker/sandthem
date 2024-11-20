@@ -14,3 +14,12 @@ $headers-font: "Nunito", "Helvetica", "sans-serif";
 //        font-url('FontFile.ttf') format('truetype')
 // }
 // $my-font: "Font Name";
+
+@font-face {
+  font-family: 'Alice';
+  src: font-url('Alice-Regular.ttf') format('truetype');
+}
+
+body {
+  font-family: 'Alice', serif;
+}
