@@ -1,30 +1,24 @@
-
 <div class="banner mb-3" style="background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.7)), url(https://img.freepik.com/free-vector/mobile_53876-166870.jpg?semt=ais_hybrid);">
   <div class="container">
-  <h1>Transform your sleep into <strong>extraordinary experiences</strong>!</h1>
-  <p>Rent and explore captivating dreamscapes, all while you rest. Your perfect night is just a dream away.</p>
-  <p><i>— because why let your imagination sleep? 🌙✨</i></p>
+    <h1>Transform your sleep into <strong>extraordinary experiences</strong>!</h1>
+    <p>Rent and explore captivating dreamscapes, all while you rest. Your perfect night is just a dream away.</p>
+    <p><i>— because why let your imagination sleep? 🌙✨</i></p>
   </div>
 </div>
 
+<div class="row mx-3">
+  <% @dreams.each do |dream| %>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 border-0" style="overflow: hidden; background-color: rgba(0,0,0,0);">
 
+        <%= link_to dream, style: "color: inherit; text-decoration: none;" do %>
+          <div class="card-category image" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url('<%= dream.image_url %>')">
+            <%= dream.title %>
+          </div>
+        <% end %>
 
-    <div class="row mx-3">
-      <% @dreams.each do |dream| %>
-          <div class="col-md-4 mb-4"> <!-- Bootstrap grid for 3 columns on medium screens -->
-            <div class="card h-100 border-0" style="overflow: hidden; background-color: rgba(0,0,0,0);" > <!-- Use h-100 to ensure cards take full height -->
-              <%= link_to dream do %>
-                <div class="card-category image" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url('<%= dream.image_url %>')">
-                  <%= dream.title %>
-                </div>
-              <% end %>
-                <%= link_to "Show this dream", dream, class: "btn btn-primary", style: "z-index: 1;" %>
-              </div>
-            </div>
-      <% end %>
+        <%= link_to "Show this dream", dream, class: "btn btn-primary", style: "z-index: 1;" %>
       </div>
-
-
-<%= link_to 'My Dreams', user_dreams_path %>
-
-<%= link_to "Create new dream", new_dream_path %>
+    </div>
+  <% end %>
+</div>

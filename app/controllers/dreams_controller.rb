@@ -6,7 +6,8 @@ class DreamsController < ApplicationController
   def show
     @dream = Dream.find(params[:id])
     @average_rating = @dream.reviews.average(:rating).to_f
-    @user_review = @dream.reviews.find_by(user_id: current_user.id)
+    @user_review = @dream.reviews.find_by(user_id: current_user.id) if current_user
+    @reviews = @dream.reviews.includes(:user) 
     @booking = Booking.new
   end
 
@@ -22,7 +23,7 @@ class DreamsController < ApplicationController
     @dream = Dream.find(params[:id])
 
     if @dream.update(dream_params)
-      redirect_to dream_path(@dream), notice: "Dream updated successfully"
+      redirect_to dream_path(@dream), notice: "Dream updated"
     else
       render :edit, status: :unprocessable_entity
     end
@@ -33,7 +34,7 @@ class DreamsController < ApplicationController
     @dream.user_id = current_user.id
 
     if @dream.save
-      redirect_to @dream, notice: "Dream was successfully created"
+      redirect_to @dream, notice: "Dream was created"
     else
       render :new, status: :unprocessable_entity
     end
@@ -42,7 +43,7 @@ class DreamsController < ApplicationController
   def destroy
     @dream = Dream.find(params[:id])
     @dream.destroy
-    redirect_to dreams_path, notice: "Dream deleted successfully"
+    redirect_to dreams_path, notice: "Dream deleted"
   end
 
   def user_dreams
