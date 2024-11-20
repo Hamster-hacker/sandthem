@@ -32,13 +32,15 @@
     <div class="col-8 bg-white p-3 border" data-controller="tab">
 
       <div class="tab">
-        <button class="tablinks" onclick="openTab(event, 'Dreams')">Dreams</button>
-        <button class="tablinks" onclick="openTab(event, 'Bookings')">Bookings</button>
-        <%# <button class="tablinks" data-action="click->tab#openTab" data-tab-target="dreamsElement">Dreams</button> %>
-        <%# <button class="tablinks" data-action="click->tab#openTab" data-tab-target="bookingsElement">Bookings</button> %>
+        <%# <button class="tablinks" onclick="openTab(event, 'Dreams')">Dreams</button> %>
+        <%# <button class="tablinks" onclick="openTab(event, 'Bookings')">Bookings</button> %>
+        <button class="tablinks active" data-action="click->tab#openTab1" data-tab-target="dreamsButtonElement">Dreams</button>
+        <button class="tablinks" data-action="click->tab#openTab2" data-tab-target="bookingsButtonElement">Bookings</button>
+        <button class="tablinks" data-action="click->tab#openTab3" data-tab-target="salesButtonElement">Sales</button>
+
       </div>
 
-      <div id="Dreams" class="tabcontent" style="display: block;">
+      <div id="Dreams" class="tabcontent" style="display: block;" data-tab-target="dreamsElement">
         <h2>Your Created Dreams</h2>
             <ul class="list-group">
               <% if @created_dreams.any? %>
@@ -53,7 +55,7 @@
             </ul>
       </div>
 
-      <div id="Bookings" class="tabcontent">
+      <div id="Bookings" class="tabcontent d-none" data-tab-target="bookingsElement">
         <h2>Your Booking History</h2>
           <ul class="list-group">
             <% if @bookings.any? %>
@@ -70,24 +72,37 @@
           </ul>
       </div>
 
-
+      <div id="Sales" class="tabcontent d-none" style="display: block;" data-tab-target="salesElement">
+              <h2>Your Sales</h2>
+                  <ul class="list-group">
+                    <% @sales.each do |booking| %>
+                      <tr>
+                        <td><%= link_to booking.dream.title, dream_path(booking.dream) %></td>
+                        <td><%= booking.user.email %></td>
+                        <td><%= booking.start_date.strftime('%b %d, %Y') %></td>
+                        <td><%= booking.end_date.present? ? booking.end_date.strftime('%b %d, %Y') : "N/A" %></td>
+                        <td><%= booking.created_at.strftime('%b %d, %Y') %></td>
+                      </tr>
+                    <% end %>
+                  </ul>
+            </div>
     </div>
   </div>
 </div>
 
-<script>
-function openTab(evt, tabName) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
+<%# <script>
+  function openTab(evt, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
 
-    tabcontent[i].style.display = "none";
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
   }
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(tabName).style.display = "block";
-  evt.currentTarget.className += " active";
-}
-</script>
+</script> %>
