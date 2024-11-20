@@ -14,7 +14,7 @@
           <%= f.input :start_date,
                       as: :string,
                       input_html: {
-                        data: { controller: "datepicker", action: "focus->datepicker#show", action: "change->price#calculate", "price-target": "dates"},
+                        data: { controller: "datepicker", action: "focus->datepicker#show", action: "change->price#calculate", "price-target": "dates", action: "change->price#enable"},
                         class: "form-control"
                       },
                       label: "Select Date",
@@ -25,9 +25,8 @@
 
     <p data-price-target="result"></p>
 
-    <!-- Form actions -->
     <div>
-      <%= f.button :submit, "Book Now", class: "btn btn-disabled w-100 " %>
+      <%= f.button :submit, "Book Now", class: "btn btn-disabled w-100", disabled: true, data: { "price-target": "bookBtn" } %>
     </div>
   </div>
 <% end %>

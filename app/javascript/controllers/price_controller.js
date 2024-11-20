@@ -3,10 +3,11 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="price"
 export default class extends Controller {
   static values = {price: Number}
-  static targets = ['dates', 'result']
+  static targets = ['dates', 'result', 'bookBtn']
   connect() {
     console.log('hello from price controller');
     console.log(this.priceValue)
+    this.totalPrice = 0;
   }
 
   calculate(){
@@ -28,6 +29,7 @@ export default class extends Controller {
 
     // Calculate the final price
     const price = days * this.priceValue;
+    this.totalPrice = price;
 
     console.log("Start Date:", startDate);
     console.log("End Date:", finalEndDate);
@@ -41,6 +43,17 @@ export default class extends Controller {
     // calculate the total price
     // inject total price in html
   }
+
+  enable() {
+    if (this.totalPrice != null) { // Check if totalPrice is set and proof is not empty
+        console.log("working");
+        console.log("Total Price:", this.totalPrice); // Debugging line to confirm the value
+        this.bookBtnTarget.removeAttribute("disabled"); // Enable the button
+        this.bookBtnTarget.classList.remove("btn-disabled");
+        this.bookBtnTarget.classList.add("btn-primary");
+    }
+}
+
 }
 
 // days = (@booking.end_date - @booking.start_date).to_i + 1
