@@ -14,7 +14,7 @@
           <%= f.input :start_date,
                       as: :string,
                       input_html: {
-                        data: { controller: "datepicker", action: "focus->datepicker#show", action: "change->price#calculate", "price-target": "dates", action: "change->price#enable"},
+                        data: { controller: "datepicker", action: "focus->datepicker#show", action: "change->price#calculate", "price-target": "dates"},
                         class: "form-control"
                       },
                       label: "Select Date",

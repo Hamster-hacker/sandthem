@@ -4,14 +4,14 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static values = {price: Number}
   static targets = ['dates', 'result', 'bookBtn']
+
   connect() {
     console.log('hello from price controller');
     console.log(this.priceValue)
-    this.totalPrice = 0;
+    this.difference = 0;
   }
 
   calculate(){
-
     console.log('hello from calculate', this.datesTarget.value);
     // we have the price
     const dateRange = this.datesTarget.value;
@@ -23,13 +23,13 @@ export default class extends Controller {
 
     // Calculate the difference in milliseconds
     const timeDifference = end - start;
+    this.difference = timeDifference;
 
     // Convert milliseconds to days
     const days = Math.ceil(timeDifference / (1000 * 60 * 60 * 24)) + 1; // Adding 1 to include both start and end date
 
     // Calculate the final price
     const price = days * this.priceValue;
-    this.totalPrice = price;
 
     console.log("Start Date:", startDate);
     console.log("End Date:", finalEndDate);
@@ -42,18 +42,18 @@ export default class extends Controller {
     // calculate the amount of days and multiply with price
     // calculate the total price
     // inject total price in html
+    this.enable();
   }
 
   enable() {
-    if (this.totalPrice != null) { // Check if totalPrice is set and proof is not empty
-        console.log("working");
-        console.log("Total Price:", this.totalPrice); // Debugging line to confirm the value
-        this.bookBtnTarget.removeAttribute("disabled"); // Enable the button
-        this.bookBtnTarget.classList.remove("btn-disabled");
-        this.bookBtnTarget.classList.add("btn-primary");
+    if (this.difference > 0) { // Check if totalPrice has been calculated
+      console.log("working");
+      console.log("Total Price:", this.totalPrice); // Debugging line to confirm the value
+      this.bookBtnTarget.removeAttribute("disabled"); // Enable the button
+      this.bookBtnTarget.classList.remove("btn-disabled");
+      this.bookBtnTarget.classList.add("btn-primary");
     }
-}
-
+  }
 }
 
 // days = (@booking.end_date - @booking.start_date).to_i + 1
