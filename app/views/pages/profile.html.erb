@@ -3,20 +3,43 @@
 <div class="m-5">
   <div class="row">
 
-    <div class="col-4 bg-light p-3 border">
+    <div class="col-4 bg-light p-3 border" data-controller="username">
         <h4>Left Side</h4>
         <p>This is the left side content.</p>
-        <p><%= current_user.username %></p>
+        <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
+
+        <div id="username" data-username-target="items">
+          <p><%= current_user.username %></p>
+          <%= simple_form_for @user, data: { username_target: "form" } do |f| %>
+            <div class="d-flex justify-content-center">
+              <div class="card p-4 shadow-sm mb-4 col-6">
+                <%= f.error_notification %>
+                <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+                <div class="form-group mb-3">
+                  <%= f.input :username, label: "username" %>
+                </div>
+                <div class="form-group mb-4 text-end">
+                  <%= f.button :submit, class: "btn btn-success" %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
       </div>
 
 
 
-    <div class="col-8 bg-white p-3 border">
+    <div class="col-8 bg-white p-3 border" data-controller="tab">
 
-        <div data-controller="toggle">
-          <button class="btn btn-success mb-3" data-action="click->toggle#fire">My dreams</button>
-          <div class="my-5 d-none" data-toggle-target="toggleableElement">
-            <h2>Your Created Dreams</h2>
+      <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'Dreams')">Dreams</button>
+        <button class="tablinks" onclick="openTab(event, 'Bookings')">Bookings</button>
+        <%# <button class="tablinks" data-action="click->tab#openTab" data-tab-target="dreamsElement">Dreams</button> %>
+        <%# <button class="tablinks" data-action="click->tab#openTab" data-tab-target="bookingsElement">Bookings</button> %>
+      </div>
+
+      <div id="Dreams" class="tabcontent" style="display: block;">
+        <h2>Your Created Dreams</h2>
             <ul class="list-group">
               <% if @created_dreams.any? %>
                 <% @created_dreams.each do |dream| %>
@@ -28,28 +51,43 @@
                 <li class="list-group-item text-muted" >You haven't created any dreams yet.</li>
               <% end %>
             </ul>
-          </div>
-        </div>
+      </div>
 
-        <div data-controller="toggle">
-          <button class="btn btn-success" data-action="click->toggle#fire">My History</button>
-          <div class="my-5 d-none" data-toggle-target="toggleableElement">
-            <h2>Your Booking History</h2>
-            <ul class="list-group">
-              <% if @bookings.any? %>
-                <% @bookings.each do |booking| %>
-                  <li class="list-group-item">
-                    <p><strong>Dream:</strong> <%= link_to booking.dream.title, dream_path(booking.dream) %></p>
-                    <p><strong>Dates:</strong> <%= booking.start_date.strftime('%b %d, %Y') %> to <%= booking.end_date.strftime('%b %d, %Y') %></p>
-                    <p><strong>Booking Made On:</strong> <%= booking.created_at.strftime('%b %d, %Y') %></p>
-                  </li>
-                <% end %>
-              <% else %>
-                <li class="list-group-item text-muted">You haven't booked any dreams yet.</li>
+      <div id="Bookings" class="tabcontent">
+        <h2>Your Booking History</h2>
+          <ul class="list-group">
+            <% if @bookings.any? %>
+              <% @bookings.each do |booking| %>
+                <li class="list-group-item">
+                  <p><strong>Dream:</strong> <%= link_to booking.dream.title, dream_path(booking.dream) %></p>
+                  <p><strong>Dates:</strong> <%= booking.start_date.strftime('%b %d, %Y') %> to <%= booking.end_date.strftime('%b %d, %Y') %></p>
+                  <p><strong>Booking Made On:</strong> <%= booking.created_at.strftime('%b %d, %Y') %></p>
+                </li>
               <% end %>
-            </ul>
-          </div>
-        </div>
+            <% else %>
+              <li class="list-group-item text-muted">You haven't booked any dreams yet.</li>
+            <% end %>
+          </ul>
+      </div>
+
+
     </div>
   </div>
 </div>
+
+<script>
+function openTab(evt, tabName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
