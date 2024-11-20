@@ -6,7 +6,14 @@ class PagesController < ApplicationController
     @user = current_user
     @created_dreams = @user.dreams
     @bookings = @user.bookings
-  end
+
+
+
+    @sales = Booking.joins(:dream)
+    .where.not(user_id: current_user.id)
+    .where(dreams: { user_id: current_user.id })
+    .includes(:user, :dream)
+end
 
   def create
     @user = current_user
