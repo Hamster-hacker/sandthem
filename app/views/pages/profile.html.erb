@@ -10,20 +10,7 @@
 
         <div id="username" data-username-target="items">
           <p><%= current_user.username %></p>
-          <%= simple_form_for @user, data: { username_target: "form" } do |f| %>
-            <div class="d-flex justify-content-center">
-              <div class="card p-4 shadow-sm mb-4 col-6">
-                <%= f.error_notification %>
-                <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-                <div class="form-group mb-3">
-                  <%= f.input :username, label: "username" %>
-                </div>
-                <div class="form-group mb-4 text-end">
-                  <%= f.button :submit, class: "btn btn-success" %>
-                </div>
-              </div>
-            </div>
-          <% end %>
+          <%= link_to 'Edit Profile', edit_user_registration_path, class: "btn btn-primary" %>
         </div>
       </div>
 

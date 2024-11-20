@@ -23,10 +23,8 @@ Rails.application.routes.draw do
     end
   end
 
-
   get 'profile', to: 'pages#profile', as: 'profile'
 
-  # Dreams routes
   resources :dreams do
     collection do
       get 'my_dreams', to: 'dreams#user_dreams', as: 'user'
@@ -34,9 +32,6 @@ Rails.application.routes.draw do
 
     resources :bookings, only: %i[new create]
 
-    # Nested reviews routes
-    resources :reviews, only: [:new, :create]
+    resources :reviews, only: %i[new create]
   end
-
-  # Bookings routes
 end

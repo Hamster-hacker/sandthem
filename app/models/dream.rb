@@ -1,3 +1,4 @@
+# rubocop:disable Naming/PredicateName
 class Dream < ApplicationRecord
   belongs_to :user
 
@@ -21,3 +22,4 @@ class Dream < ApplicationRecord
     self.user == user
   end
 end
+# rubocop:enable Naming/PredicateName
