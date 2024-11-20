@@ -23,7 +23,7 @@
       <% if @average_rating > 0 %>
         <p>
           <strong>Rating:</strong>
-          <span class="badge bg-primary"><%= @average_rating.round(1) %> / 5.0</span>
+          <span class="badge bg-primary"><%= '%.1f' % @average_rating %> / 5.0</span>
         </p>
       <% end %>
 
@@ -42,20 +42,20 @@
 
     <p class="text-muted mb-3"><%= @user_review.description %></p>
     <div>
-      <% @user_review.rating.times do %>
+      <% @user_review.rating.to_i.times do %>
         <i class="fas fa-star text-warning"></i>
       <% end %>
-      <% (5 - @user_review.rating).times do %>
+      <% (5 - @user_review.rating.to_i).times do %>
         <i class="far fa-star text-warning"></i>
       <% end %>
-      <span class="text-muted ms-2">(<%= @user_review.rating %>.0 / 5.0)</span>
+      <span class="text-muted ms-2">(<%= (@user_review.rating.to_f).round(1) %> / 5.0)</span>
     </div>
   </div>
 </div>
 <% end %>
 
-<% if @dream.reviews.any? %>
-  <% @dream.reviews.each do |review| %>
+<% if @reviews.any? %>
+  <% @reviews.each do |review| %>
     <div class="card mt-4 shadow-sm border-0" style="max-width: 400px;">
       <div class="card-body">
         <h6 class="fw-bold text-primary mb-2"><%= review.title %></h6>
@@ -63,13 +63,13 @@
 
         <p class="text-muted mb-3"><%= review.description %></p>
         <div>
-          <% review.rating.times do %>
+          <% review.rating.to_i.times do %>
             <i class="fas fa-star text-warning"></i>
           <% end %>
-          <% (5 - review.rating).times do %>
+          <% (5 - review.rating.to_i).times do %>
             <i class="far fa-star text-warning"></i>
           <% end %>
-          <span class="text-muted ms-2">(<%= review.rating %>.0 / 5.0)</span>
+          <span class="text-muted ms-2">(<%= review.rating %> / 5.0)</span>
         </div>
         <p><em>by: <%= review.user.username %></em></p>
       </div>

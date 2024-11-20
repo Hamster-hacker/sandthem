@@ -5,9 +5,9 @@ class DreamsController < ApplicationController
 
   def show
     @dream = Dream.find(params[:id])
-    @average_rating = @dream.reviews.average(:rating).to_f
+    @average_rating = @dream.reviews.average(:rating) || 0.0
     @user_review = @dream.reviews.find_by(user_id: current_user.id) if current_user
-    @reviews = @dream.reviews.includes(:user) 
+    @reviews = @dream.reviews.where.not(user_id: current_user.id)
     @booking = Booking.new
   end
 
