@@ -21,7 +21,7 @@ end
     respond_to do |format|
 
         format.html { redirect_to profile_path }
-        format.json # Follows the classic Rails flow and look for a create.json view
+        format.json
     end
   end
 end
