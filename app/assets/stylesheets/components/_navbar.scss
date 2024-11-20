@@ -1,12 +1,81 @@
-.navbar-lewagon {
+.navbar-custom {
+  display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  background: white;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  padding: 5px 10px;
+  height: 60px ;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+.navbar-brand {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff;
 }
 
-.navbar-lewagon .navbar-brand img {
+.navbar-brand .logo {
   width: 40px;
+  height: auto;
+}
+
+.brand-name {
+  color: black;
+  margin-left: 5px;
+  font-size: medium;
+  font-weight: 500;
+}
+
+.nav-link {
+  color: black;
+  margin-right: 10px;
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+  color: rgba(255, 102, 178, 0.3);
+}
+
+.nav-link.btn {
+  background: blue($color: #000000);
+  color: #000;
+  transition: color 0.3s ease-in-out;
+  padding: 3px;
+}
+
+.nav-link.btn:hover {
+  background: rgba(255, 102, 178, 0.3);
+}
+
+.avatar-img {
+  width: 35px;
+  height: 35px;
+  border: 1px solid rgba(238, 169, 215, 0.5);
+}
+
+.dropdown-menu {
+  background: linear-gradient(145deg, #ffe6f0, #e6f7ff, #ffffff);
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  padding: 10px 0;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.dropdown-item {
+  color: #333;
+  transition: color 0.3s ease;;
+  font-size: 1rem;
+  padding: 8px 20px;
+  margin: 0 10px;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.dropdown-item:hover {
+  background: rgba(255, 102, 178, 0.3);
 }
