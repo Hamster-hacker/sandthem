@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/MethodLength
 class BookingsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_dream
@@ -36,3 +37,4 @@ class BookingsController < ApplicationController
     params.require(:booking).permit(:dream_id, :start_date, :end_date)
   end
 end
+# rubocop:enable Metrics/MethodLength
