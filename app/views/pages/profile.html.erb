@@ -1,18 +1,33 @@
-<h1>Welcome, <%= current_user.username %>!</h1>
 
-<div class="m-5">
+<h1 class="text-light my-3" style="font-family: Alice; margin-left: 60px;">Welcome, <%= current_user.username %>!</h1>
+<div class="mx-5">
   <div class="row">
 
-    <div class="col-4 bg-light p-3 border" data-controller="username">
-        <h4>Left Side</h4>
-        <p>This is the left side content.</p>
-        <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
+    <div class="col-md-4 p-4 profile-card">
+  <!-- User Avatar -->
+  <div class="text-center mb-3">
+    <img
+      class="avatar-large rounded-circle border border-light"
+      alt="User Avatar"
+      src="https://i.pinimg.com/736x/b5/60/0a/b5600a19637c0bd555bc6404df70c5ce.jpg"
+    />
+  </div>
 
-        <div id="username" data-username-target="items">
-          <p><%= current_user.username %></p>
-          <%= link_to 'Edit Profile', edit_user_registration_path, class: "btn btn-primary" %>
-        </div>
-      </div>
+  <!-- User Details -->
+  <div id="username" class="text-center" data-username-target="items">
+    <h3 class="text-white mb-2"><%= current_user.username %></h3>
+    <p class="text-white">Welcome back to your dream journey!</p>
+    <p class="text-light">Member since: <%= current_user.created_at.strftime("%B %Y") %></p>
+    <p class="text-light">Dreams Created: <%= current_user.dreams.count %></p>
+  </div>
+
+  <!-- Actions -->
+  <div class="text-center mt-4">
+    <%= link_to 'Edit Profile', edit_user_registration_path, class: "btn btn-primary me-2" %>
+    <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
+  </div>
+</div>
+
 
 
 

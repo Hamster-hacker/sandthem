@@ -1,35 +1,47 @@
 <div class="container my-4">
-  <h2>Edit Your Review</h2>
+  <h2 class="text-center text-white">Edit Your Review</h2>
 
-  <%= form_with(model: [ @dream, @review ], local: true) do |form| %>
-    <% if @review.errors.any? %>
-      <div class="alert alert-danger">
-        <h4><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved</h4>
-        <ul>
-          <% @review.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
+  <div class="d-flex justify-content-center">
+    <div class="card p-4 shadow-sm mb-4 col-12 col-md-10 col-lg-8 review-form-card">
+      <%= form_with(model: [ @dream, @review ], local: true) do |form| %>
+        <% if @review.errors.any? %>
+          <div class="alert alert-danger">
+            <h4><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved</h4>
+            <ul>
+              <% @review.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
 
-    <div class="mb-3">
-      <%= form.label :title %>
-      <%= form.text_field :title, class: "form-control" %>
+        <div class="row">
+          <!-- Left Column -->
+          <div class="col-md-6">
+            <div class="mb-3">
+              <%= form.label :title, class: "form-label text-white" %>
+              <%= form.text_field :title, class: "form-control" %>
+            </div>
+          </div>
+
+          <!-- Right Column -->
+          <div class="col-md-6">
+            <div class="mb-3">
+              <%= form.label :rating, class: "form-label text-white" %>
+              <%= form.number_field :rating, min: 0.0, max: 5.0, step: 0.1, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :description, class: "form-label text-white" %>
+          <%= form.text_area :description, rows: 4, class: "form-control" %>
+        </div>
+
+        <div class="text-end">
+          <%= form.submit "Update Review", class: "btn filter-btn" %>
+        </div>
+      <% end %>
     </div>
-
-    <div class="mb-3">
-      <%= form.label :description %>
-      <%= form.text_area :description, rows: 4, class: "form-control" %>
-    </div>
-
-    <div class="mb-3">
-      <%= form.label :rating %>
-      <%= form.number_field :rating, min: 0.0, max: 5.0, step: 0.1, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= form.submit "Update Review", class: "btn btn-primary" %>
-    </div>
-  <% end %>
+  </div>
 </div>
