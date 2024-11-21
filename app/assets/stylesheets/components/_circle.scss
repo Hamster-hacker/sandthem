@@ -1,6 +1,6 @@
 .circle {
-  width: 400px; /* Diameter of the circle */
-  height: 400px; /* Diameter of the circle */
+  width: 80%; /* Diameter of the circle */
+  height: 80%; /* Diameter of the circle */
   background-color: #FD3FF7; /* Circle color */
   filter: blur(70px); /* Blur effect */
   border-radius: 50%; /* Makes it a circle */
@@ -10,6 +10,14 @@
   z-index: -1; /* Ensures it is behind other elements */
 }
 
+.circle-wrapper {
+  width: 500px;
+  height: 500px;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
 .circle-bottom-left {
   width: 400px; /* Diameter of the circle */
   height: 400px; /* Diameter of the circle */
