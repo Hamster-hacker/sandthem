@@ -36,13 +36,18 @@
 
 
 .blob {
-  width: 300px;
-  height: 300px;
+  width: 300px; /* Adjust to desired size */
+  height: 300px; /* Adjust to desired size */
   background: radial-gradient(circle at 50% 50%,
-    #edd6ff 30%, #49acd3 50%, #c680ff 70%, #3034aa 90%);
+    #c680ff 30%, #ae61ee 50%, #fd435b 70%, #3034aa 90%);
   border-radius: 50%;
-  filter: blur(50px);
-  animation: blob-move 5s infinite alternate;
+  filter: blur(50px); /* Add blur effect for softness */
+  position: absolute; /* Positioning within the .cta */
+  top: 50%; /* Center vertically */
+  left: 0%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Correct centering */
+  z-index: -1; /* Push it behind the content */
+  animation: blob-move 5s infinite alternate; /* Optional animation */
 }
 
 /* Animation for movement */
