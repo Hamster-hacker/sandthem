@@ -31,4 +31,4 @@ class Dream < ApplicationRecord
   }
 end
 # rubocop:enable Naming/PredicateName
-# # rubocop:enable Layout/ArgumentAlignment
+# rubocop:enable Layout/ArgumentAlignment
