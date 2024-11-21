@@ -21,11 +21,51 @@
 .circle-bottom-left {
   width: 400px; /* Diameter of the circle */
   height: 400px; /* Diameter of the circle */
-  background-color: #C680FF; /* Circle color */
-  filter: blur(70px); /* Blur effect */
+  background: radial-gradient(circle at 50% 50%,
+  #edd6ff 30%, #C680FF 50%, #c680ff 70%, #3034aa 90%);  filter: blur(70px); /* Blur effect */
+  border-radius: 50%;
+  filter: blur(50px);
+  animation: blob-move 5s infinite alternate;
   border-radius: 50%; /* Makes it a circle */
   position: absolute; /* Position relative to the window */
   bottom: -200px; /* Move the circle partially off-screen */
   left: -200px; /* Align it to the left edge */
   z-index: -1; /* Send it behind the main content */
+}
+
+
+
+.blob {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle at 50% 50%,
+    #edd6ff 30%, #49acd3 50%, #c680ff 70%, #3034aa 90%);
+  border-radius: 50%;
+  filter: blur(50px);
+  animation: blob-move 5s infinite alternate;
+}
+
+/* Animation for movement */
+@keyframes blob-move {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(20px, -20px) scale(1.2);
+  }
+  100% {
+    transform: translate(-20px, 20px) scale(1);
+  }
+}
+
+@keyframes circle-bottom-left-move {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(20px, -40px) scale(1.2);
+  }
+  100% {
+    transform: translate(-20px, 20px) scale(1);
+  }
 }
