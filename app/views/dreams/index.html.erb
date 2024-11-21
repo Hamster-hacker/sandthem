@@ -10,7 +10,7 @@
 
               <div class="card-body" >
                 <h5 class="card-title text-truncate"><%= dream.title %></h5>
-                <p class="card-text"><%= number_to_currency(dream.price) %></p>
+                <p class="card-text"><%= number_to_currency(dream.price, unit: "€") %></p>
                 <% if dream.reviews.any? %>
                   <p class="card-text text-muted">
                     <%= dream.reviews.average(:rating).to_f.round(1) || 0.0 %> / 5.0
