@@ -1,37 +1,26 @@
-import { Controller } from "stimulus";
+import { Controller } from "@hotwired/stimulus"
 
+// Connects to data-controller="blob"
 export default class extends Controller {
-  static targets = ["blob"];
+  static targets = ["blob"]
 
   connect() {
-    this.handleMouseMove = this.handleMouseMove.bind(this);
-    document.addEventListener("mousemove", this.handleMouseMove);
-  }
+    console.log("controller initialized", this.blobTarget)
+    // Add event listener for mouse movement
+    document.addEventListener('mousemove', (e) => {
+      // Get mouse position relative to the window
+      const mouseX = e.clientX;
+      const mouseY = e.clientY;
 
-  disconnect() {
-    document.removeEventListener("mousemove", this.handleMouseMove);
-  }
+      // Set limits for how much the blob moves
+      const moveX = (mouseX - window.innerWidth / 2) / 10; // Control horizontal movement
+      const moveY = (mouseY - window.innerHeight / 2) / 10; // Control vertical movement
+      const scale = 1 + (Math.abs(mouseX - window.innerWidth / 2) + Math.abs(mouseY - window.innerHeight / 2)) / 1000; // Optional scaling
 
-  handleMouseMove(event) {
-    // Get the mouse coordinates relative to the window
-    const mouseX = event.clientX;
-    const mouseY = event.clientY;
+      console.log({moveX, moveY, scale})
 
-    // Get the blob element dimensions and position
-    const blob = this.element;
-    const blobRect = blob.getBoundingClientRect();
-    const blobWidth = blobRect.width;
-    const blobHeight = blobRect.height;
-
-    // Calculate the center of the blob element
-    const blobCenterX = blobRect.left + blobWidth / 2;
-    const blobCenterY = blobRect.top + blobHeight / 2;
-
-    // Calculate the movement delta based on the mouse position
-    const deltaX = (mouseX - blobCenterX) / 20; // Adjust the multiplier to control movement
-    const deltaY = (mouseY - blobCenterY) / 20; // Adjust the multiplier to control movement
-
-    // Apply the transform to move the blob
-    blob.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+      // Apply the transform properties dynamically
+      this.blobTarget.style.transform = `translate(${moveX}px, ${moveY}px) scale(${scale})`;
+    });
   }
 }
