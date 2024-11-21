@@ -10,7 +10,7 @@
 
 .half-image {
   width: 40%;
-  height: 100%;
+  height: 50%;
   object-fit: cover;
   object-position: 30% 70%;
 
@@ -39,15 +39,16 @@
 }
 
 .what {
-  margin: 60px;
+  margin: 100px;
   padding: 20px;
-  width: 50%;
+  width: 30%;
   max-width: 900px;
   text-align: center;
-  background: #fff;
+  background: rgba(237, 214, 255, 0.4);
   border-radius: 20px;
-  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1), -10px -10px 20px rgba(255, 255, 255, 0.7);
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1), -10px -10px 20px rgba(198, 128, 255, 0.7);
 }
+
 
 
 
@@ -85,19 +86,21 @@
 
 
 /* CSS */
+/* CSS */
 .button-85 {
   padding: 0.6em 2em;
   border: none;
   outline: none;
   color: rgb(255, 255, 255);
-  background: #111;
+  background: #3034aa; /* Button background color */
   cursor: pointer;
   position: relative;
   z-index: 0;
-  border-radius: 10px;
+  border-radius: 20px; /* Rounder corners */
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  transition: box-shadow 0.3s ease-in-out; /* Smooth hover transition */
 }
 
 .button-85:before {
@@ -113,19 +116,19 @@
     #7a00ff,
     #ff00c8,
     #ff0000
-  );
+  ); /* Gradient glow colors */
   position: absolute;
-  top: -2px;
-  left: -2px;
+  top: -4px; /* Increased glow size */
+  left: -4px;
   background-size: 400%;
   z-index: -1;
-  filter: blur(5px);
-  -webkit-filter: blur(5px);
-  width: calc(100% + 4px);
-  height: calc(100% + 4px);
+  filter: blur(20px); /* Glow thickness */
+  -webkit-filter: blur(8px);
+  width: calc(100% + 8px);
+  height: calc(100% + 8px);
   animation: glowing-button-85 20s linear infinite;
-  transition: opacity 0.3s ease-in-out;
-  border-radius: 10px;
+  transition: filter 0.3s ease-in-out; /* Smooth glow change on hover */
+  border-radius: 20px;
 }
 
 @keyframes glowing-button-85 {
@@ -140,16 +143,24 @@
   }
 }
 
+.button-85:hover:before {
+  filter: blur(12px); /* Thicker glow on hover */
+  -webkit-filter: blur(12px);
+}
+
 .button-85:after {
   z-index: -1;
   content: "";
   position: absolute;
   width: 100%;
   height: 100%;
-  background: #222;
+  background: #020839; /* Darker background */
   left: 0;
   top: 0;
-  border-radius: 10px;
+  border-radius: 20px; /* Match rounded corners */
 }
 
-
+/* Optional smooth hover effect for button shadow */
+.button-85:hover {
+  box-shadow: 0px 0px 20px rgba(72, 114, 255, 0.7); /* Glow shadow on hover */
+}
