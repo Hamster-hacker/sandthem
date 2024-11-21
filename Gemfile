@@ -56,6 +56,10 @@ gem "devise"
 # for claudinary
 gem "cloudinary"
 
+# gem for search
+gem "pg_search"
+
+
 
 group :development, :test do
   gem "dotenv-rails"
