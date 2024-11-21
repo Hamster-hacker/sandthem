@@ -10,36 +10,19 @@
               <div class="card-body p-2" >
                 <h5 class="card-title text-truncate"><%= dream.title %></h5>
                 <div class = "d-flex justify-content-between">
-                <p class="card-text"><%= number_to_currency(dream.price) %></p>
-                <% if dream.reviews.any? %>
-                  <p class="card-text">
-                    <%= dream.reviews.average(:rating).to_f.round(1) || 0.0 %>
-                  </p>
-                <% end %>
+
+                  <p class="card-text"><%= number_to_currency(dream.price, unit: "€") %></p>
+                  <% if dream.reviews.any? %>
+                    <p class="card-text">
+                      <%= dream.reviews.average(:rating).to_f.round(1) || 0.0 %>
+                    </p>
+                  <% end %>
                 </div>
               </div>
             </div>
-            <% end %>
+          <% end %>
         </div>
       <% end %>
     </div>
   </div>
-</div>
-
-<div class="row mx-3">
-  <% @dreams.each do |dream| %>
-    <div class="col-md-4 mb-4">
-      <div class="card h-100 border-0" style="overflow: hidden; background-color: rgba(0,0,0,0);">
-        <%= link_to dream, style: "color: inherit; text-decoration: none;" do %>
-          <div class="card-category image" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url('<%= dream.photo.attached? ? cl_image_path(dream.photo.key) : asset_path(dream.image_url)%>')">
-          </div>
-          <h3><%= dream.title %></h3>
-          <p><%= dream.price %></p>
-          <% if dream.reviews.any? %>
-            <p><%= dream.reviews.average(:rating).to_f.round(1) || 0.0 %> / 5.0</p>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
-  <% end %> 
 </div>

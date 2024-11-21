@@ -32,7 +32,7 @@ class ReviewsController < ApplicationController
   def destroy
     if @review.user == current_user
       @review.destroy
-      redirect_to @dream, notice: "Your review has been deleted."
+      redirect_to @dream, notice: "Review deleted"
     end
   end
 
