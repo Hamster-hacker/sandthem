@@ -3,46 +3,65 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="price"
 export default class extends Controller {
   static values = {price: Number}
-  static targets = ['dates', 'result']
+  static targets = ['dates', 'result', 'bookBtn']
+
   connect() {
     console.log('hello from price controller');
     console.log(this.priceValue)
+    this.difference = 0;
   }
 
   calculate(){
-
     console.log('hello from calculate', this.datesTarget.value);
-    // we have the price
-    const dateRange = this.datesTarget.value;
+    const dateRange = this.datesTarget.value.trim();
+    if (!dateRange.includes("to")) {
+      // Ensure there is both a start and an end date
+      console.log("Incomplete date range, skipping calculation");
+      this.disable(); // Ensure the button remains disabled
+      return;
+    }
+
     const [startDate, endDate] = dateRange.split(" to ");
-    const finalEndDate = endDate || startDate;
-
     const start = new Date(startDate);
-    const end = new Date(finalEndDate);
+    const end = new Date(endDate);
 
-    // Calculate the difference in milliseconds
-    const timeDifference = end - start;
+    // Ensure valid start and end dates are provided
+    if (isNaN(start) || isNaN(end)) {
+      console.log("Invalid date range, skipping calculation");
+      this.disable(); // Ensure the button remains disabled
+      return;
+    }
 
-    // Convert milliseconds to days
-    const days = Math.ceil(timeDifference / (1000 * 60 * 60 * 24)) + 1; // Adding 1 to include both start and end date
+    // Calculate the difference in days
+    const days = Math.ceil((end - start) / (1000 * 60 * 60 * 24)) + 1; // Days include both start and end
 
     // Calculate the final price
     const price = days * this.priceValue;
 
     console.log("Start Date:", startDate);
-    console.log("End Date:", finalEndDate);
+    console.log("End Date:", endDate);
+    console.log("Total days:", days);
     console.log("Final price:", price);
 
-    // Inject the result into the result target
-    this.resultTarget.innerHTML = `Total Price: €${price.toFixed(2)}`;
+    // Update the result display
+    this.resultTarget.innerHTML = `Total for ${days} days: €${price.toFixed(2)}`;
+    this.difference = days; // Update difference
+    this.enable(); // Enable the button if conditions are met
+  }
 
-        // we have the start date and end date
-    // calculate the amount of days and multiply with price
-    // calculate the total price
-    // inject total price in html
+  enable() {
+    if (this.difference >= 1) { // Ensure a valid difference (at least 1 day)
+      console.log("Enabling button");
+      this.bookBtnTarget.removeAttribute("disabled");
+      this.bookBtnTarget.classList.remove("btn-disabled");
+      this.bookBtnTarget.classList.add("btn-primary");
+    }
+  }
+
+  disable() {
+    console.log("Disabling button");
+    this.bookBtnTarget.setAttribute("disabled", "true");
+    this.bookBtnTarget.classList.add("btn-disabled");
+    this.bookBtnTarget.classList.remove("btn-primary");
   }
 }
-
-// days = (@booking.end_date - @booking.start_date).to_i + 1
-//       price = days * @dream.price.to_f
-//       price = price.round(5)
