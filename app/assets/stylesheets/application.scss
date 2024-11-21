@@ -11,3 +11,10 @@
 @import "components/index";
 @import "pages/index";
 @import "components/forms";
+
+body {
+  /* background: linear-gradient(to right, #f9c6d0, #d6a9f6, #a0c8f0); */
+  background-color: #5903BC;
+  min-height: 100vh;
+  margin: 0;
+}
