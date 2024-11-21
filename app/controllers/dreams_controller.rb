@@ -2,7 +2,6 @@ class DreamsController < ApplicationController
   def index
     @dreams = Dream.all
 
-
     if params[:query].present?
       @dreams = Dream.global_search(params[:query])
     end
