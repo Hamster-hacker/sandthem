@@ -9,27 +9,13 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-
-    <style>
-      body {
-        background-color: #3034aa;
-        min-height: 100vh;
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-      }
-      .content {
-        flex: 1;
-      }
-    </style>
-
   </head>
 
   <body data-controller="blob">
-    <div class="background">
+
       <div class="circle-wrapper"><span class="circle"></span></div>
-      <span class="circle-bottom-left"></span>
-    </div>
+      <%# <span class="circle-bottom-left"></span> %>
+
     <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
 
@@ -41,5 +27,4 @@
     <p>&copy; 2024 Sandthem. All rights reserved. <br> Be afraid, we will come after you for copyright infrigement.</p>
   </footer>
   </body>
-
 </html>

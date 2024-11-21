@@ -26,7 +26,6 @@
   #edd6ff 30%, #C680FF 50%, #c680ff 70%, #3034aa 90%);  filter: blur(70px); /* Blur effect */
   border-radius: 50%;
   filter: blur(50px);
-  animation: blob-move 5s infinite alternate;
   border-radius: 50%; /* Makes it a circle */
   position: absolute; /* Position relative to the window */
   bottom: -200px; /* Move the circle partially off-screen */

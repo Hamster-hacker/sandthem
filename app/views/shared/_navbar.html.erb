@@ -32,14 +32,9 @@
             <%= link_to "Create a Dream", new_dream_path, class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
-            <div class="avatar-wrapper">
-              <a href="#" class="avatar nav-link dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <%= image_tag "https://i.pinimg.com/736x/b5/60/0a/b5600a19637c0bd555bc6404df70c5ce.jpg", class: "avatar rounded-circle", alt: "Profile Image" %>
-                <svg class="avatar-border" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
-                  <circle cx="60" cy="60" r="55" stroke="#49acd3" stroke-width="5" fill="none"/>
-                </svg>
-              </a>
-            </div>
+            <a href="#" class="avatar nav-link dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= image_tag "https://i.pinimg.com/736x/b5/60/0a/b5600a19637c0bd555bc6404df70c5ce.jpg", class: "avatar-img rounded-circle", alt: "Profile Image" %>
+            </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "My Profile", profile_path, class: "dropdown-item" %>
               <%= link_to "Log Out", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %>

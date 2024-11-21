@@ -1,37 +1,22 @@
-.avatar-wrapper {
-  position: relative;
-  width: 60px;
-  height: 60px;
-}
-
 .avatar {
-  width: 100%;
-  height: 100%;
+  width: 60px;
   border-radius: 50%;
-  transition: transform 0.3s ease; /* Smooth size change */
 }
 
-.avatar-wrapper:hover .avatar {
-  transform: scale(1.1); /* Slightly scale the avatar on hover */
+/* Avatar image */
+.avatar-img {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(238, 169, 215, 0.5);
+  transition: transform 0.3s ease, outline 0.3s ease; /* Smooth animation */
+
 }
 
-.avatar-border {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  stroke-dasharray: 345; /* Circumference of the circle (2πr) */
-  stroke-dashoffset: 345; /* Start from 0 (no visible border) */
-  transition: stroke-dashoffset 1s ease; /* Smooth animation */
-  pointer-events: none; /* Prevent the SVG from interfering with the image */
+.avatar-img:hover {
+  transform: scale(1.1); /* Slightly increase size */
+  outline: 4px solid #49ACD3; /* Add a teal outline */
+  outline-offset: 2px; /* Add space between the outline and the image */
 }
-
-.avatar-wrapper:hover .avatar-border {
-  stroke-dashoffset: 0; /* Animate the stroke to complete the border */
-}
-
 
 
 .avatar-large {
