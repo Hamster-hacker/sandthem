@@ -10,15 +10,9 @@
   </div>
 </div>
 
-<div class="d-flex justify-content-center align-items-center vh-100">
-  <div class="about text-center">
-    <h2>What We’re About</h2>
-    <p>Transform your nights into unforgettable adventures. Choose from a library of custom dreamscapes designed by experts.</p>
-  </div>
-  <img src="https://images.unsplash.com/photo-1513436539083-9d2127e742f1?q=80&w=2063&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Dream Image" class="half-image ml-4">
-</div>
 
-    <div class="d-flex justify-align-center align-items-center" >
+
+    <div class="d-flex justify-align-center align-items-center" style="background-image: url('<%= asset_path('5516287.jpg') %>');">
       <div class="about ">
         <h2>What We’re About</h2>
         <p>Transform your nights into unforgettable adventures. Choose from a library of custom dreamscapes designed by experts.</p>
@@ -39,17 +33,14 @@
 </div>
 
 
-    <div class=" container text-center cta position-relative" style="height: 60vh;">
-  <div class="blob"></div> <!-- Blob should be placed first for background layering -->
-  <h2 class="mb-5">Ready to Transform Your Sleep?</h2>
+<div class="container text-center cta position-relative" style="height: 60vh;">
+  <div class="blob" style="position: absolute; z-index: 1; top: 1%; left: 1%"></div>
+  <h2 class="mb-5" style="position: relative; z-index: 2;">Ready to Transform Your Sleep?</h2>
   <%= link_to "Get Started Now", dreams_path, class: "button-85", style: "font-size: 30px; text-decoration: none;" %>
 </div>
 
 
-
 <div class="text-center cta">
-  <h2 class="mb-5">Ready to Transform Your Sleep?</h2>
-  <%= link_to "Get Started Now", dreams_path, class: "button-85", style: "font-size: 30px; text-decoration: none;" %>
   <div class="blob" data-blob-target="blob"></div>
 </div>
 

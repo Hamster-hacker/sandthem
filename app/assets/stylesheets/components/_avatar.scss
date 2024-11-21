@@ -1,7 +1,39 @@
-.avatar {
-  width: 40px;
-  border-radius: 50%;
+.avatar-wrapper {
+  position: relative;
+  width: 60px;
+  height: 60px;
 }
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  transition: transform 0.3s ease; /* Smooth size change */
+}
+
+.avatar-wrapper:hover .avatar {
+  transform: scale(1.1); /* Slightly scale the avatar on hover */
+}
+
+.avatar-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  stroke-dasharray: 345; /* Circumference of the circle (2πr) */
+  stroke-dashoffset: 345; /* Start from 0 (no visible border) */
+  transition: stroke-dashoffset 1s ease; /* Smooth animation */
+  pointer-events: none; /* Prevent the SVG from interfering with the image */
+}
+
+.avatar-wrapper:hover .avatar-border {
+  stroke-dashoffset: 0; /* Animate the stroke to complete the border */
+}
+
+
+
 .avatar-large {
   width: 56px;
   border-radius: 50%;
