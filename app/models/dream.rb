@@ -1,4 +1,5 @@
 # rubocop:disable Naming/PredicateName
+# rubocop:disable Layout/ArgumentAlignment
 class Dream < ApplicationRecord
   has_one_attached :photo
 
@@ -23,15 +24,11 @@ class Dream < ApplicationRecord
   def is_owner?(user)
     self.user == user
   end
-
-
-
   include PgSearch::Model
-pg_search_scope :global_search,
-  against: [ :title, :category, :description ],
-  using: {
-    tsearch: { prefix: true } # <-- now `superman batm` will return something!
+  pg_search_scope :global_search,
+  against: %i[title category description], using: {
+    tsearch: { prefix: true }
   }
-  
 end
 # rubocop:enable Naming/PredicateName
+# # rubocop:enable Layout/ArgumentAlignment
