@@ -1,9 +1,22 @@
 <div class="navbar navbar-expand-sm navbar-dark navbar-custom">
   <div class="container-fluid">
-    <%= link_to root_path, class: "navbar-brand d-flex align-items-center" do %>
-      <%= image_tag "dreamcatcher.png", class: "logo me-2" %>
-      <span class="brand-name">Sandthem</span>
-    <% end %>
+    <div class="d-flex align-items-center">
+      <%= link_to root_path, class: "navbar-brand d-flex align-items-center" do %>
+        <%= image_tag "sandthem-icon.png", class: "logo me-2" %>
+      <% end %>
+      <%= form_with url: dreams_path, method: :get, class: "d-flex ms-3 search-form" do %>
+        <div class="input-group">
+          <%= text_field_tag :query,
+              params[:query],
+              class: "form-control search-input",
+              placeholder: "Search"
+          %>
+          <button class="btn search-btn" type="submit">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      <% end %>
+    </div>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -11,16 +24,6 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto">
-
- <%= form_with url: dreams_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :query,
-            params[:query],
-            class: "form-control",
-            placeholder: "Type a keyword"
-        %>
-      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
-    <% end %>
-
         <% if user_signed_in? %>
           <li class="nav-item">
             <%= link_to "Home", root_path, class: "nav-link" %>
@@ -28,16 +31,12 @@
           <li class="nav-item">
             <%= link_to "Create a Dream", new_dream_path, class: "nav-link" %>
           </li>
-          <li class="nav-item">
-            <%= link_to "My Profile", profile_path, class: "nav-link" %>
-          </li>
           <li class="nav-item dropdown">
             <a href="#" class="avatar nav-link dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-img rounded-circle", alt: "Profile Image" %>
             </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Another Action", "#", class: "dropdown-item" %>
+              <%= link_to "My Profile", profile_path, class: "dropdown-item" %>
               <%= link_to "Log Out", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %>
             </div>
           </li>
