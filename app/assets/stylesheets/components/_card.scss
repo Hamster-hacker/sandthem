@@ -30,3 +30,11 @@
     padding: 0 10px; /* Add padding for better alignment on smaller screens */
     box-sizing: border-box; /* Ensure padding is included in the element's total width */
   }
+
+  .dream-card {
+    background-color: inherit !important;
+    padding: 16px;
+    padding-bottom: 8px;
+    border: 2px solid !important;
+    border-color: aqua !important;
+  }
