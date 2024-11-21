@@ -10,31 +10,13 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
 
-    <style>
-      body {
-        /* background: linear-gradient(to right, #f9c6d0, #d6a9f6, #a0c8f0); */
-        background-color: #5903BC;
-        min-height: 100vh;
-        margin: 0;
-      }
-
-      .circle-bottom-left {
-        width: 400px; /* Diameter of the circle */
-        height: 400px; /* Diameter of the circle */
-        background-color: #FD3FF7; /* Circle color */
-        filter: blur(70px); /* Blur effect */
-        border-radius: 50%; /* Makes it a circle */
-        position: absolute; /* Position relative to the window */
-        bottom: -200px; /* Move the circle partially off-screen */
-        left: -200px; /* Align it to the left edge */
-        z-index: -1; /* Send it behind the main content */
-      }
-
-    </style>
-
   </head>
 
   <body>
+    <div class="background">
+      <span class="circle"></span>
+      <span class="circle-bottom-left"></span>
+    </div>
     <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
 
