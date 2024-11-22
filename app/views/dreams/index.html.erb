@@ -1,14 +1,8 @@
 <div class="background">
   <div class="container">
     <div class="row">
-
-
-
-
-      <!-- Filter Options (Displayed from the get-go) -->
       <%= form_with url: dreams_path, method: :get, local: true, class: " mt-3 d-flex flex-column filter-form" do %>
         <div class="row mb-3">
-          <!-- Category Filter -->
           <div class="col-md-6">
             <label for="category" class="form-label text-light">Category</label>
             <select class="form-select filter-select" name="category" id="category">
@@ -19,7 +13,6 @@
             </select>
           </div>
 
-          <!-- Rating Filter -->
           <div class="col-md-6">
             <label for="rating" class="form-label text-light">Rating</label>
             <select class="form-select filter-select" name="rating" id="rating">
@@ -33,7 +26,6 @@
           </div>
         </div>
 
-        <!-- Submit Button -->
        <div class="d-flex justify-content-between">
         <%= link_to dreams_path, class: "btn filter-btn-clear" do %>
           Clear Filters
@@ -43,7 +35,6 @@
   </div>
       <% end %>
 
-      <!-- Displaying the Filtered Dreams -->
       <% if @dreams.any? %>
         <% @dreams.each do |dream| %>
           <div class="col-lg-3 col-md-4 col-sm-6 mt-4 mb-2">
