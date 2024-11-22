@@ -13,18 +13,21 @@
 
   <body data-controller="blob">
 
-      <div class="circle-wrapper"><span class="circle"></span></div>
       <%# <span class="circle-bottom-left"></span> %>
+  <div class="layout-structure">
+    <div>
+      <%= render "shared/navbar" %>
+      <%= render "shared/flashes" %>
+    </div>
 
-    <%= render "shared/navbar" %>
-    <%= render "shared/flashes" %>
 
     <div class="content">
       <%= yield %>
     </div>
 
-  <footer>
-    <p>&copy; 2024 Sandthem. All rights reserved. <br> Be afraid, we will come after you for copyright infrigement.</p>
-  </footer>
+    <footer class="pb-0">
+      <p>&copy; 2024 Sandthem. All rights reserved. <br> Be afraid, we will come after you for copyright infrigement.</p>
+    </footer>
+  </div>
   </body>
 </html>

@@ -1,47 +1,55 @@
-<div class="banner mb-3">
+<div class="banner mb-5">
   <div class="container">
+    <span class="circle-top-left"></span>
     <div class="d-flex justify-content-center align-items-center w-100">
       <div class="text-center">
-        <h1 style="font-size: 60px; font-family: Alice; font-weight: lighter; color: white;">YOUR DREAMS</h1>
-        <h1 style="font-size: 30px; font-weight: lighter; color: white;">Experience the extraordinary while you sleep. Rent dreams tailored to your imagination.</h1>
-        <p style="color: white;">Your perfect night is just a dream away. 🌙✨</p>
+        <h1 style="font-size: 42px; font-family: Alice; font-weight: lighter; color: white;">SandThem</h1>
+        <h1 style="font-size: 20px; color: white;">Experience the extraordinary while you sleep. Rent dreams tailored to your imagination.</h1>
+        <p class="mb-5"style="color: white;">Your perfect night is just a dream away. 🌙✨</p>
+        <%= link_to "Let's be a dreamer!", dreams_path, class: "button-85", style: "font-size: 20px; text-decoration: none; fontn" %>
       </div>
     </div>
   </div>
 </div>
 
-
-
-    <div class="d-flex justify-align-center align-items-center" style="background-image: url('<%= asset_path('5516287.jpg') %>');">
-      <div class="about ">
-        <h2>What We’re About</h2>
-        <p>Transform your nights into unforgettable adventures. Choose from a library of custom dreamscapes designed by experts.</p>
-      </div>
-        <img src="https://images.unsplash.com/photo-1513436539083-9d2127e742f1?q=80&w=2063&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" class="half-image">
+<div class="homepage d-flex justify-content-around align-items-center">
+  <div class="about-wrapper">
+    <div class="about">
+      <h2>Who We Are?</h2>
+      <p>We’re a bunch of dreamers who believe in the magic of imagination and endless possibilities. Our goal is to inspire you to dream big and live life to the fullest.</p>
     </div>
+    <div class="about">
+      <h2>How do we do it?</h2>
+      <p>With SandThem, we bring your dreams to life by giving you magical, dream-filled experiences. Drift off, escape reality, and wake up refreshed, ready to shine brighter every day..</p>
+    </div>
+  </div>
 
+  <img src="https://images.unsplash.com/photo-1513436539083-9d2127e742f1?q=80&w=2063&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" class="half-image">
+</div>
 
-  <div class="d-flex justify-content-end">
-  <div class="what text-light">
+<div class="d-flex justify-content-center mt-3">
+  <div class="what text-light" style="width: 80%;">
     <h2>How It Works</h2>
-    <ol>
+    <ol class="what-list">
       <li>Pick a dream scenario that sparks your curiosity.</li>
       <li>Set your sleep schedule and enjoy your dream experience.</li>
       <li>Wake up refreshed, inspired, and ready for a new day!</li>
     </ol>
   </div>
 </div>
+<span class="circle"></span>
 
 
-<div class="container text-center cta position-relative" style="height: 60vh;">
-  <div class="blob" style="position: absolute; z-index: 1; top: 1%; left: 1%"></div>
+<div class="container text-center cta position-relative mb-3" style="height: 30vh;">
+
   <h2 class="mb-5" style="position: relative; z-index: 2;">Ready to Transform Your Sleep?</h2>
-  <%= link_to "Get Started Now", dreams_path, class: "button-85", style: "font-size: 30px; text-decoration: none;" %>
+  <%= link_to "Get Started Now", dreams_path, class: "button-85", style: "font-size: 25px; text-decoration: none;" %>
 </div>
 
 
 <div class="text-center cta">
   <div class="blob" data-blob-target="blob"></div>
 </div>
+
 
 <span class="circle-bottom-left"></span>

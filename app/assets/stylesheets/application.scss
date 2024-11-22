@@ -10,7 +10,6 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
-@import "components/forms";
 
 
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap");
@@ -24,4 +23,10 @@ body {
 }
 .content {
   flex: 1;
+}
+
+.layout-structure {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
 }
