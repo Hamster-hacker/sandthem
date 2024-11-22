@@ -3,4 +3,41 @@
   bottom: 16px;
   right: 16px;
   z-index: 1000;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  font-family: 'Quicksand', sans-serif; /* Updated font */
+  font-size: 16px;
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: none; /* Remove any border */
+}
+
+.alert-info {
+  background: linear-gradient(to bottom right, #00062a, #3034aa);
+  color: #ffffff;
+  border: none; /* Explicitly ensure no border */
+}
+
+.alert-warning {
+  background: linear-gradient(to bottom right, #f06078, #c680ff);
+  color: #ffffff; /* Ensure text remains visible */
+  font-family: 'Quicksand', sans-serif; /* Match the rest of the styling */
+  border: none; /* Remove any unwanted border */
+  border-radius: 8px; /* Slightly rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Consistent shadow */
+}
+
+.btn-close {
+  background: none;
+  border: none;
+  color: white;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.btn-close:hover {
+  opacity: 1;
 }
