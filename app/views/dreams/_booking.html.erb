@@ -1,6 +1,6 @@
-<%= simple_form_for [dream, booking], url: dream_bookings_path(dream), html: { data: {controller: "price", "price-price-value": @dream.price }, class: "needs-validation" } do |f| %>
-  <div class="card shadow p-4 mb-4 mx-auto" style="max-width: 400px;">
-    <h4 class="card-title text-primary text-center">Book Your Dream</h4>
+<%= simple_form_for [dream, booking], url: dream_bookings_path(dream), html: { data: {controller: "price", "price-price-value": @dream.price }, class: "needs-validation " } do |f| %>
+  <div class="booking shadow p-4 mb-4 " style="max-width: 400px; margin-left: auto;">
+    <h4 class="card-title text-center mb-3" style="font-family: Alice;  color: #EDD6FF; font-size: 30px;">Book Your Dream</h4>
     <div class="card-body w-100">
       <% if f.error_notification || (f.object.errors[:base].present?) %>
         <div class="alert alert-danger">

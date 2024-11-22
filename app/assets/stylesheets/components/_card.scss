@@ -83,3 +83,107 @@
 .card-text {
   color: white;
 }
+
+
+.booking {
+  background-color: rgba(237, 214, 255, 0.2); /* Semi-transparent background */
+  padding: 16px;
+  border-radius: 20px; /* Rounded corners */
+  backdrop-filter: blur(10px); /* Applies the blur effect */
+  -webkit-backdrop-filter: blur(10px); /* For Safari support */
+}
+
+.review {
+  background-color: rgba(237, 214, 255, 0.2); /* Semi-transparent background */
+  padding: 16px;
+  border-radius: 20px; /* Rounded corners */
+  backdrop-filter: blur(10px); /* Applies the blur effect */
+  -webkit-backdrop-filter: blur(10px); /* For Safari support */
+
+  /* Adding a teal gradient border */
+  border: 4px solid transparent; /* Set initial border to transparent */
+  background-image: linear-gradient(white, white), linear-gradient(to right, #49ACD3, #006F7A); /* Gradient background for the border */
+  background-origin: border-box; /* Ensures the gradient is applied to the border */
+  background-clip: content-box, border-box; /* Ensures the border has the gradient */
+}
+
+.booking .form-group label {
+  color: white; /* Label text color */
+  font-weight: bold;
+}
+
+.booking .form-control,
+.booking .form-select {
+  border-radius: 10px;
+  border: 1px solid #49acd3;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #333;
+}
+
+.booking .form-control:focus,
+.booking .form-select:focus {
+  border-color: #49acd3;
+  box-shadow: 0 0 10px rgba(73, 172, 211, 0.5);
+}
+
+
+.teal-line {
+  border-top: 2px solid #49ACD3; /* Teal color */
+  width: 100%; /* Full width */
+  margin: 20px 0; /* Optional: Adds some space above and below the line */
+}
+
+
+.page-wrapper {
+  padding: 0 30px;
+}
+
+/* Custom Button Styling */
+
+/* Primary Button (Back to HomePage) */
+.btn-primary-custom {
+  background-color: #49acd3; /* Teal background */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 30px; /* Rounded edges */
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary-custom:hover {
+  background-color: #F855E5; /* Light pink on hover */
+  transform: scale(1.05); /* Slight scaling effect */
+}
+
+/* Delete Button */
+.btn-delete-custom {
+  background-color: #49acd3; /* Teal background */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 30px; /* Rounded edges */
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-delete-custom:hover {
+  background-color: #e63946; /* Light pink on hover */
+  transform: scale(1.05); /* Slight scaling effect */
+}
+
+/* Edit Button */
+.btn-edit-custom {
+  background-color: #49acd3; /* Teal background */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 30px; /* Rounded edges */
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-edit-custom:hover {
+  background-color: #f29512; /* Light pink on hover */
+  transform: scale(1.05); /* Slight scaling effect */
+}

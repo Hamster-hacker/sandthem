@@ -31,7 +31,7 @@
 
 
 
-    <div class="col-8 bg-white p-3 border" data-controller="tab">
+    <div class="col-8 p-3 profile-card" data-controller="tab">
 
       <div class="tab">
         <%# <button class="tablinks" onclick="openTab(event, 'Dreams')">Dreams</button> %>
@@ -43,7 +43,7 @@
       </div>
 
       <div id="dreams" class="tabcontent" style="display: block;" data-tab-target="tab">
-        <h2>Your Created Dreams</h2>
+        <h2 class="text-white">Your Created Dreams</h2>
             <ul class="list-group">
               <% if @created_dreams.any? %>
                 <% @created_dreams.each do |dream| %>
@@ -52,13 +52,13 @@
                   </li>
                 <% end %>
               <% else %>
-                <li class="list-group-item text-muted" >You haven't created any dreams yet.</li>
+                <li class="list-group-item text-white" >You haven't created any dreams yet.</li>
               <% end %>
             </ul>
       </div>
 
       <div id="bookings" class="tabcontent d-none" data-tab-target="tab">
-        <h2>Your Booking History</h2>
+        <h2 class="text-white">Your Booking History</h2>
           <ul class="list-group">
             <% if @bookings.any? %>
               <% @bookings.each do |booking| %>
@@ -69,14 +69,13 @@
                 </li>
               <% end %>
             <% else %>
-              <li class="list-group-item text-muted">You haven't booked any dreams yet.</li>
+              <li class="list-group-item text-white">You haven't booked any dreams yet.</li>
             <% end %>
           </ul>
       </div>
 
       <div id="sales" class="tabcontent d-none" data-tab-target="tab">
   <div class="sales-card p-4">
-    <h2 class="text-white mb-4">Your Sales</h2>
 
     <% if @sales.any? %>
       <!-- Total Earnings -->
@@ -87,7 +86,7 @@
 
       <!-- Sales List -->
       <div class="table-responsive">
-        <table class="table table-dark table-hover rounded shadow">
+        <table class="table table-hover rounded shadow">
           <thead class="thead-light">
             <tr>
               <th>Dream</th>
@@ -117,7 +116,7 @@
         </table>
       </div>
     <% else %>
-      <p class="text-muted">You haven't made any sales yet. Start renting out your dreams to earn money!</p>
+      <p class="text-white">You haven't made any sales yet. Start renting out your dreams to earn money!</p>
     <% end %>
   </div>
 </div>
