@@ -1,27 +1,27 @@
 .circle {
-  width: 80%; /* Diameter of the circle */
-  height: 80%; /* Diameter of the circle */
+  width: 500px; /* Diameter of the circle */
+  height: 500px; /* Diameter of the circle */
   background-color: #C680FF; /* Circle color */
-  filter: blur(70px); /* Blur effect */
+  filter: blur(90px); /* Blur effect */
   border-radius: 50%; /* Makes it a circle */
   position: absolute; /* Allows positioning relative to the window */
   top: 100px; /* Adjust as needed to move it partially off-screen */
-  right: -100px; /* Adjust as needed to move it partially off-screen */
+  left: 244px; /* Adjust as needed to move it partially off-screen */
   z-index: -1; /* Ensures it is behind other elements */
 }
 
 .circle-wrapper {
-  width: 500px;
-  height: 500px;
+  width: 700px;
+  height: 700px;
   // overflow: hidden;
   // overflow-x: hidden;
-  position: absolute;
-  top: 60px;
+
+  top: 0;
   right: 0;
 }
 .circle-bottom-left {
-  width: 400px; /* Diameter of the circle */
-  height: 400px; /* Diameter of the circle */
+  width: 300px; /* Diameter of the circle */
+  height: 300px; /* Diameter of the circle */
   background: radial-gradient(circle at 50% 50%,
   #edd6ff 30%, #C680FF 50%, #c680ff 70%, #3034aa 90%);  filter: blur(70px); /* Blur effect */
   border-radius: 50%;
@@ -38,12 +38,12 @@
   z-index: -1;
   width: 300px;
   height: 300px;
-  background: radial-gradient(circle at 50% 50%, #a065cd 30%, #1100d0 50%, #8c00ff 70%, #3034aa 90%);
+  background: radial-gradient(circle at 50% 50%, #f47676 30%, #1100d0 50%, #ff008c 70%, #3034aa 90%);
   border-radius: 50%;
   filter: blur(50px);
   position: absolute;  /* This keeps the blob within the bounds of the viewport */
-  top: 50%; /* Center vertically */
-  left: 50%; /* Center horizontally */
+  top: 38%; /* Center vertically */
+  left: 32%; /* Center horizontally */
   transition: transform 0.1s ease-out; /* Smooth out movement */
 }
 
