@@ -34,3 +34,96 @@
   border: 1px solid #ccc;
   border-top: none;
 }
+
+
+/* Profile Card */
+.profile-card {
+  background-color: rgba(48, 52, 170, 0.6); /* Semi-transparent background */
+  border-radius: 20px; /* Rounded corners */
+  border: 2px solid #49acd3; /* Teal border */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  backdrop-filter: blur(10px); /* Applies the blur effect */
+  -webkit-backdrop-filter: blur(10px); /* For Safari support */
+}
+
+.profile-card .avatar-large {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow for avatar */
+}
+
+.profile-card h3 {
+  color: #fff; /* White text for username */
+  font-weight: bold;
+}
+
+.profile-card p {
+  color: #d3d3d3; /* Light text for secondary details */
+}
+
+.profile-card .btn {
+  border-radius: 20px; /* Rounded buttons */
+  font-size: 16px;
+  transition: all 0.3s ease-in-out;
+}
+
+.profile-card .btn-primary {
+  background-color: #49acd3;
+  border: none;
+}
+
+.profile-card .btn-primary:hover {
+  background-color: #3a92c0;
+}
+
+.profile-card .btn-danger {
+  background-color: #e63946;
+  border: none;
+}
+
+.profile-card .btn-danger:hover {
+  background-color: #c92e3a;
+}
+
+
+
+////////
+/* Sales Card Styling */
+.sales-card {
+  background-color: rgba(48, 52, 170, 0.6); /* Semi-transparent background */
+  border-radius: 20px;
+  border: 2px solid #49acd3; /* Teal border */
+  padding: 20px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px); /* Blur effect */
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+}
+
+/* Table Styling */
+.table-dark {
+  background-color: rgba(30, 30, 30, 0.9); /* Semi-transparent black background */
+  color: #fff; /* White text */
+}
+
+.table-dark th, .table-dark td {
+  vertical-align: middle; /* Align content in the middle */
+}
+
+.table-dark .text-primary {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.table-dark .text-primary:hover {
+  text-decoration: underline;
+}
+
+.table-dark .text-success {
+  font-weight: bold;
+}
+
+.table-hover tbody tr:hover {
+  background-color: rgba(73, 172, 211, 0.2); /* Light teal hover effect */
+}
+

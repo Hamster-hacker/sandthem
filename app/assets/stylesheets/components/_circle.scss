@@ -5,7 +5,7 @@
   filter: blur(70px); /* Blur effect */
   border-radius: 50%; /* Makes it a circle */
   position: absolute; /* Allows positioning relative to the window */
-  top: -100px; /* Adjust as needed to move it partially off-screen */
+  top: 100px; /* Adjust as needed to move it partially off-screen */
   right: -100px; /* Adjust as needed to move it partially off-screen */
   z-index: -1; /* Ensures it is behind other elements */
 }
@@ -13,9 +13,10 @@
 .circle-wrapper {
   width: 500px;
   height: 500px;
-  overflow: hidden;
+  // overflow: hidden;
+  // overflow-x: hidden;
   position: absolute;
-  top: 0;
+  top: 60px;
   right: 0;
 }
 .circle-bottom-left {
@@ -25,7 +26,6 @@
   #edd6ff 30%, #C680FF 50%, #c680ff 70%, #3034aa 90%);  filter: blur(70px); /* Blur effect */
   border-radius: 50%;
   filter: blur(50px);
-  animation: blob-move 5s infinite alternate;
   border-radius: 50%; /* Makes it a circle */
   position: absolute; /* Position relative to the window */
   bottom: -200px; /* Move the circle partially off-screen */
@@ -35,10 +35,10 @@
 
   /* Ensure the blob is positioned absolutely within the viewport */
 .blob {
-
+  z-index: -1;
   width: 300px;
   height: 300px;
-  background: radial-gradient(circle at 50% 50%, #edd6ff 30%, #49acd3 50%, #c680ff 70%, #3034aa 90%);
+  background: radial-gradient(circle at 50% 50%, #a065cd 30%, #1100d0 50%, #8c00ff 70%, #3034aa 90%);
   border-radius: 50%;
   filter: blur(50px);
   position: absolute;  /* This keeps the blob within the bounds of the viewport */

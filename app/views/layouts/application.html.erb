@@ -9,22 +9,22 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-
   </head>
 
   <body data-controller="blob">
-    <div class="background">
+
       <div class="circle-wrapper"><span class="circle"></span></div>
-      <span class="circle-bottom-left"></span>
-    </div>
+      <%# <span class="circle-bottom-left"></span> %>
+
     <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
 
-    <%= yield %>
-
-  </body>
+    <div class="content">
+      <%= yield %>
+    </div>
 
   <footer>
     <p>&copy; 2024 Sandthem. All rights reserved. <br> Be afraid, we will come after you for copyright infrigement.</p>
   </footer>
+  </body>
 </html>

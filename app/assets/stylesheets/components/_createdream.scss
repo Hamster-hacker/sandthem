@@ -1,0 +1,122 @@
+/* Form Card */
+.dream-form-card {
+  background-color: rgba(48, 52, 170, 0.6); /* Semi-transparent background */
+  padding: 16px;
+  border: 2px solid #49acd3; /* Teal border */
+  border-radius: 20px; /* Rounded corners */
+  backdrop-filter: blur(10px); /* Applies the blur effect */
+  -webkit-backdrop-filter: blur(10px); /* For Safari support */
+}
+
+.dream-form-card .form-group label {
+  color: white; /* Label text color */
+  font-weight: bold;
+}
+
+.dream-form-card .form-control,
+.dream-form-card .form-select {
+  border-radius: 10px;
+  border: 1px solid #49acd3;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #333;
+}
+
+.dream-form-card .form-control:focus,
+.dream-form-card .form-select:focus {
+  border-color: #49acd3;
+  box-shadow: 0 0 10px rgba(73, 172, 211, 0.5);
+}
+
+.dream-form-card .btn {
+  border-radius: 10px;
+  font-size: 16px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dream-form-card .btn:hover {
+  color: white;
+  background-color: #f855e5; }
+
+/* Clear Filters Button */
+.filter-btn-clear {
+  background-color: transparent;
+  color: #49acd3;
+  border: 2px solid #49acd3;
+  border-radius: 10px;
+  font-size: 16px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.filter-btn-clear:hover {
+  background-color: #49acd3;
+  color: white;
+}
+
+/* Apply Filters Button (already styled) */
+.filter-btn {
+  background-color: #49acd3;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.filter-btn:hover {
+  color: white;
+  background-color: #f855e5; /* Hover effect */
+}
+
+//ggggggggggggggggggggggggggggggggggggggg
+
+/* Review Form Styling */
+.review-form-card {
+  background-color: rgba(48, 52, 170, 0.6); /* Semi-transparent background */
+  padding: 16px;
+  border: 2px solid #49acd3; /* Teal border */
+  border-radius: 20px; /* Rounded corners */
+  backdrop-filter: blur(10px); /* Applies the blur effect */
+  -webkit-backdrop-filter: blur(10px); /* For Safari support */
+}
+
+.review-form-card .form-label {
+  color: white; /* Label text color */
+  font-weight: bold;
+}
+
+.review-form-card .form-control {
+  border-radius: 10px;
+  border: 1px solid #49acd3;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #333;
+}
+
+.review-form-card .form-control:focus {
+  border-color: #49acd3;
+  box-shadow: 0 0 10px rgba(73, 172, 211, 0.5);
+}
+
+.review-form-card .btn {
+  border-radius: 10px;
+  font-size: 16px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.review-form-card .btn:hover {
+  background-color: #3a92c0;
+}
+
+/* Heading Styling */
+.text-center.text-white {
+  color: white;
+  margin-bottom: 20px;
+}
+

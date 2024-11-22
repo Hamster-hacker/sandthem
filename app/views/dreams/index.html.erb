@@ -1,28 +1,77 @@
 <div class="background">
   <div class="container">
     <div class="row">
-      <% @dreams.each do |dream| %>
-        <div class="col-lg-3 col-md-4 col-sm-6 mt-4 mb-2">
-          <%= link_to dream, style: "color: inherit; text-decoration: none;" do %>
-            <div class="card h-100 border-0 shadow-sm dream-card" style="overflow: hidden; border-radius: 20px">
-              <div class="card-category image" style="height: 200px; background-size: cover; border-radius: 20px; background-position: center; background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('<%= dream.photo.attached? ? cl_image_path(dream.photo.key) : asset_path(dream.image_url)%>');">
-              </div>
-              <div class="card-body p-1" >
-                <h5 class="card-title text-truncate"><%= dream.title %></h5>
-                <div class = "d-flex justify-content-between">
 
-                  <p class="card-text"><%= number_to_currency(dream.price, unit: "€") %></p>
-                  <% if dream.reviews.any? %>
-                    <p class="card-text">
-                      <%= dream.reviews.average(:rating).to_f.round(1) || 0.0 %> ⭐
-                    </p>
-                  <% end %>
+
+
+
+      <!-- Filter Options (Displayed from the get-go) -->
+      <%= form_with url: dreams_path, method: :get, local: true, class: " mt-3 d-flex flex-column filter-form" do %>
+        <div class="row mb-3">
+          <!-- Category Filter -->
+          <div class="col-md-6">
+            <label for="category" class="form-label text-light">Category</label>
+            <select class="form-select filter-select" name="category" id="category">
+              <option value="">Select Category</option>
+              <% Dream.pluck(:category).uniq.each do |category| %>
+                <option value="<%= category %>" <%= params[:category] == category ? 'selected' : '' %>><%= category %></option>
+              <% end %>
+            </select>
+          </div>
+
+          <!-- Rating Filter -->
+          <div class="col-md-6">
+            <label for="rating" class="form-label text-light">Rating</label>
+            <select class="form-select filter-select" name="rating" id="rating">
+              <option value="">Select Rating</option>
+              <option value="1" <%= params[:rating] == "1" ? 'selected' : '' %>>1 ⭐</option>
+              <option value="2" <%= params[:rating] == "2" ? 'selected' : '' %>>2 ⭐</option>
+              <option value="3" <%= params[:rating] == "3" ? 'selected' : '' %>>3 ⭐</option>
+              <option value="4" <%= params[:rating] == "4" ? 'selected' : '' %>>4 ⭐</option>
+              <option value="5" <%= params[:rating] == "5" ? 'selected' : '' %>>5 ⭐</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+       <div class="d-flex justify-content-between">
+        <%= link_to dreams_path, class: "btn filter-btn-clear" do %>
+          Clear Filters
+        <% end %>
+
+    <button type="submit" class="btn filter-btn">Apply Filters</button>
+  </div>
+      <% end %>
+
+      <!-- Displaying the Filtered Dreams -->
+      <% if @dreams.any? %>
+        <% @dreams.each do |dream| %>
+          <div class="col-lg-3 col-md-4 col-sm-6 mt-4 mb-2">
+            <%= link_to dream, style: "color: inherit; text-decoration: none;" do %>
+              <div class="card h-100 dream-card">
+                <div style="overflow: hidden; border-radius: 20px">
+                  <div class="card-category image" style="height: 200px; background-size: cover; border-radius: 20px; background-position: center; background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('<%= dream.photo.attached? ? cl_image_path(dream.photo.key) : asset_path(dream.image_url)%>');">
+                  </div>
+                </div>
+                <div class="card-body p-1">
+                  <h5 class="card-title text-truncate"><%= dream.title %></h5>
+                  <div class="d-flex justify-content-between">
+                    <p class="card-text"><%= number_to_currency(dream.price, unit: "€") %></p>
+                    <% if dream.reviews.any? %>
+                      <p class="card-text">
+                        <%= dream.reviews.average(:rating).to_f.round(1) || 0.0 %> ⭐
+                      </p>
+                    <% end %>
+                  </div>
                 </div>
               </div>
-            </div>
-          <% end %>
-        </div>
+            <% end %>
+          </div>
+        <% end %>
+      <% else %>
+        <p class="text-center text-light mt-5" style="font-size: 30px;"> :( <br>No dreams found based on your filter criteria.</p>
       <% end %>
+
     </div>
   </div>
 </div>

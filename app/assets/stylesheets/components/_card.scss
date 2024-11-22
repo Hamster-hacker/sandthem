@@ -1,17 +1,50 @@
-// .card-category {
-//   background-size: cover;
-//   background-position: center;
-//   height: 200px;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   color: white;
-//   font-size: 24px;
-//   font-weight: bold;
-//   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-//   border-radius: 5px;
-//   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-// }
+/* Filter Form Styling */
+.filter-form {
+  background-color: rgba(48, 52, 170, 0.6); /* Semi-transparent background */
+  padding: 16px;
+  border: 2px solid #49acd3; /* Teal border */
+  border-radius: 20px; /* Rounded corners */
+  backdrop-filter: blur(10px); /* Applies the blur effect */
+  -webkit-backdrop-filter: blur(10px); /* For Safari support */
+}
+
+.filter-select {
+  background-color: rgba(48, 52, 170, 0.6); /* Same semi-transparent background */
+  color: white;
+  border: 2px solid #49acd3;
+  border-radius: 10px; /* Rounded corners for select */
+  font-size: 16px;
+  padding: 8px;
+  width: 100%;
+}
+
+.filter-select:focus {
+  border-color: #49acd3; /* Focused state styling */
+  outline: none;
+}
+
+/* Clear Filters Button */
+.filter-btn-clear {
+  background-color: transparent;
+  color: #49acd3;
+  border: 2px solid #49acd3;
+  border-radius: 10px;
+  font-size: 16px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.filter-btn-clear:hover {
+  background-color: #49acd3;
+  color: white;
+}
+
+
+
+
+
+/* Card Category (Already provided) */
 .card-category {
   background-size: cover;
   background-position: center;
@@ -32,15 +65,19 @@
 }
 
 .dream-card {
-  background-color: inherit !important;
+  background-color: rgba(48, 52, 170, 0.6); /* Semi-transparent background */
   padding: 8px;
   padding-bottom: 8px;
+  border: 2px solid #49acd3; /* Teal border */
+  border-radius: 20px; /* Rounded corners */
+  backdrop-filter: blur(10px); /* Applies the blur effect */
+  -webkit-backdrop-filter: blur(10px); /* For Safari support */
 }
 
 .card-title {
   color: white;
   font-size: 1em;
-  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .card-text {

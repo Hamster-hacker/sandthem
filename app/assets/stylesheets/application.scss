@@ -16,8 +16,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap");
 
 body {
-  /* background: linear-gradient(to right, #f9c6d0, #d6a9f6, #a0c8f0); */
-  background-color: #3034AA;
+  background-color: #3034aa;
   min-height: 100vh;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+.content {
+  flex: 1;
 }

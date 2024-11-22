@@ -2,8 +2,21 @@ class DreamsController < ApplicationController
   def index
     @dreams = Dream.all
 
+    # Apply search query filter if present
     if params[:query].present?
-      @dreams = Dream.global_search(params[:query])
+      @dreams = @dreams.global_search(params[:query])
+    end
+
+    # Filter by category
+    if params[:category].present?
+      @dreams = @dreams.where(category: params[:category])
+    end
+
+    # Filter by rating
+    if params[:rating].present?
+      @dreams = @dreams.joins(:reviews)
+                       .group('dreams.id')
+                       .having('AVG(reviews.rating) >= ?', params[:rating].to_i)
     end
   end
 

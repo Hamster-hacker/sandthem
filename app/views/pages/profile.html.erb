@@ -1,18 +1,33 @@
-<h1>Welcome, <%= current_user.username %>!</h1>
 
-<div class="m-5">
+<h1 class="text-light my-3" style="font-family: Alice; margin-left: 60px;">Welcome, <%= current_user.username %>!</h1>
+<div class="mx-5">
   <div class="row">
 
-    <div class="col-4 bg-light p-3 border" data-controller="username">
-        <h4>Left Side</h4>
-        <p>This is the left side content.</p>
-        <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
+    <div class="col-md-4 p-4 profile-card">
+  <!-- User Avatar -->
+  <div class="text-center mb-3">
+    <img
+      class="avatar-large rounded-circle border border-light"
+      alt="User Avatar"
+      src="https://i.pinimg.com/736x/b5/60/0a/b5600a19637c0bd555bc6404df70c5ce.jpg"
+    />
+  </div>
 
-        <div id="username" data-username-target="items">
-          <p><%= current_user.username %></p>
-          <%= link_to 'Edit Profile', edit_user_registration_path, class: "btn btn-primary" %>
-        </div>
-      </div>
+  <!-- User Details -->
+  <div id="username" class="text-center" data-username-target="items">
+    <h3 class="text-white mb-2"><%= current_user.username %></h3>
+    <p class="text-white">Welcome back to your dream journey!</p>
+    <p class="text-light">Member since: <%= current_user.created_at.strftime("%B %Y") %></p>
+    <p class="text-light">Dreams Created: <%= current_user.dreams.count %></p>
+  </div>
+
+  <!-- Actions -->
+  <div class="text-center mt-4">
+    <%= link_to 'Edit Profile', edit_user_registration_path, class: "btn btn-primary me-2" %>
+    <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
+  </div>
+</div>
+
 
 
 
@@ -60,19 +75,53 @@
       </div>
 
       <div id="sales" class="tabcontent d-none" data-tab-target="tab">
-              <h2>Your Sales</h2>
-                  <ul class="list-group">
-                    <% @sales.each do |booking| %>
-                      <tr>
-                        <td><%= link_to booking.dream.title, dream_path(booking.dream) %></td>
-                        <td><%= booking.user.email %></td>
-                        <td><%= booking.start_date.strftime('%b %d, %Y') %></td>
-                        <td><%= booking.end_date.present? ? booking.end_date.strftime('%b %d, %Y') : "N/A" %></td>
-                        <td><%= booking.created_at.strftime('%b %d, %Y') %></td>
-                      </tr>
-                    <% end %>
-                  </ul>
-            </div>
+  <div class="sales-card p-4">
+    <h2 class="text-white mb-4">Your Sales</h2>
+
+    <% if @sales.any? %>
+      <!-- Total Earnings -->
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4 class="text-light">Total Earnings:</h4>
+        <h4 class="text-success">€<%= @sales.sum { |booking| booking.dream.price }.round(2) %></h4>
+      </div>
+
+      <!-- Sales List -->
+      <div class="table-responsive">
+        <table class="table table-dark table-hover rounded shadow">
+          <thead class="thead-light">
+            <tr>
+              <th>Dream</th>
+              <th>Buyer</th>
+              <th>From</th>
+              <th>Till</th>
+              <th>Booked On</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @sales.each do |booking| %>
+              <tr>
+                <td>
+                  <%= link_to booking.dream.title, dream_path(booking.dream), class: "text-primary" %>
+                </td>
+                <td><%= booking.user.username %></td>
+                <td><%= booking.start_date.strftime('%b %d, %Y') %></td>
+                <td>
+                  <%= booking.end_date.present? ? booking.end_date.strftime('%b %d, %Y') : "N/A" %>
+                </td>
+                <td><%= booking.created_at.strftime('%b %d, %Y') %></td>
+                <td class="text-success">€<%= booking.dream.price.round(2) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% else %>
+      <p class="text-muted">You haven't made any sales yet. Start renting out your dreams to earn money!</p>
+    <% end %>
+  </div>
+</div>
+
     </div>
   </div>
 </div>
