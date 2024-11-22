@@ -73,7 +73,7 @@
       <% if !@user_review && @reviews.empty? %>
         <p class="text-center" style="font-size: 20px; color: #49ACD3;">No reviews yet. Be the first one to review it!</p>
       <% end %>
-
+      
       <div class="row">
         <!-- My Review Section (if applicable) -->
         <% if current_user && @dream.bookings.exists?(user_id: current_user.id) && @user_review.nil? %>
