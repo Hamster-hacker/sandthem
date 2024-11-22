@@ -49,6 +49,7 @@
   padding: 5px 10px;
   border-radius: 20px; /* Rounded buttons */
   transition: all 0.3s ease-in-out;
+  position: static; /* Override relative positioning */
 }
 
 .nav-link.btn:hover {
@@ -120,8 +121,6 @@
   color: #49ACD3; /* Default color of the telescope icon */
 }
 
-
-
 .dropdown-menu {
   background: linear-gradient(145deg, #ffe6f0, #e6f7ff, #ffffff);
   border: 1px solid #ccc;
@@ -156,10 +155,6 @@
   box-shadow: none; /* Removes any box-shadow effects applied by the browser */
 }
 
-
-////////////////////////////
-
-
 /* General nav link styles */
 .nav-link {
   color: #EDD6FF;
@@ -175,10 +170,10 @@
 .nav-link::after {
   content: "";
   position: absolute;
-  bottom: -3px;
+  bottom: 0px;
   left: 0;
   width: 0;
-  height: 3px;
+  height: 2px;
   background-color: #49acd3;
   transition: width 0.3s ease-in-out;
 }
@@ -199,4 +194,8 @@
 /* You can also target the .avatar on hover if you want to prevent it on hover */
 .navbar-nav .avatar:hover::after {
   content: none; /* Ensure no underline effect on hover for the profile link */
+}
+
+.nav-link.btn::after {
+  display: none; /* Prevent the underline effect */
 }
