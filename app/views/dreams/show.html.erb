@@ -84,7 +84,7 @@
     <!-- My Review Section (if applicable) -->
     <% if current_user && @dream.bookings.exists?(user_id: current_user.id) && @user_review.nil? %>
       <div class="col-md-6 mb-4">
-        <div class="text-center" style="width: 300px; margin-left: 460px;">
+        <div class="text-center" style="width: 300px;">
           <div class="card-body">
             <%= link_to new_dream_review_path(@dream), class: "btn-primary-custom", title: "Add a Review" do %>
               <i class="fas fa-pen"></i> Add a Review
