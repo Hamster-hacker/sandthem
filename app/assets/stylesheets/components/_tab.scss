@@ -85,3 +85,45 @@
 .profile-card .btn-danger:hover {
   background-color: #c92e3a;
 }
+
+
+
+////////
+/* Sales Card Styling */
+.sales-card {
+  background-color: rgba(48, 52, 170, 0.6); /* Semi-transparent background */
+  border-radius: 20px;
+  border: 2px solid #49acd3; /* Teal border */
+  padding: 20px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px); /* Blur effect */
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+}
+
+/* Table Styling */
+.table-dark {
+  background-color: rgba(30, 30, 30, 0.9); /* Semi-transparent black background */
+  color: #fff; /* White text */
+}
+
+.table-dark th, .table-dark td {
+  vertical-align: middle; /* Align content in the middle */
+}
+
+.table-dark .text-primary {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.table-dark .text-primary:hover {
+  text-decoration: underline;
+}
+
+.table-dark .text-success {
+  font-weight: bold;
+}
+
+.table-hover tbody tr:hover {
+  background-color: rgba(73, 172, 211, 0.2); /* Light teal hover effect */
+}
+

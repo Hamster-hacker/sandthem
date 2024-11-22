@@ -75,19 +75,53 @@
       </div>
 
       <div id="sales" class="tabcontent d-none" data-tab-target="tab">
-              <h2>Your Sales</h2>
-                  <ul class="list-group">
-                    <% @sales.each do |booking| %>
-                      <tr>
-                        <td><%= link_to booking.dream.title, dream_path(booking.dream) %></td>
-                        <td><%= booking.user.email %></td>
-                        <td><%= booking.start_date.strftime('%b %d, %Y') %></td>
-                        <td><%= booking.end_date.present? ? booking.end_date.strftime('%b %d, %Y') : "N/A" %></td>
-                        <td><%= booking.created_at.strftime('%b %d, %Y') %></td>
-                      </tr>
-                    <% end %>
-                  </ul>
-            </div>
+  <div class="sales-card p-4">
+    <h2 class="text-white mb-4">Your Sales</h2>
+
+    <% if @sales.any? %>
+      <!-- Total Earnings -->
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4 class="text-light">Total Earnings:</h4>
+        <h4 class="text-success">€<%= @sales.sum { |booking| booking.dream.price }.round(2) %></h4>
+      </div>
+
+      <!-- Sales List -->
+      <div class="table-responsive">
+        <table class="table table-dark table-hover rounded shadow">
+          <thead class="thead-light">
+            <tr>
+              <th>Dream</th>
+              <th>Buyer</th>
+              <th>From</th>
+              <th>Till</th>
+              <th>Booked On</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @sales.each do |booking| %>
+              <tr>
+                <td>
+                  <%= link_to booking.dream.title, dream_path(booking.dream), class: "text-primary" %>
+                </td>
+                <td><%= booking.user.username %></td>
+                <td><%= booking.start_date.strftime('%b %d, %Y') %></td>
+                <td>
+                  <%= booking.end_date.present? ? booking.end_date.strftime('%b %d, %Y') : "N/A" %>
+                </td>
+                <td><%= booking.created_at.strftime('%b %d, %Y') %></td>
+                <td class="text-success">€<%= booking.dream.price.round(2) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% else %>
+      <p class="text-muted">You haven't made any sales yet. Start renting out your dreams to earn money!</p>
+    <% end %>
+  </div>
+</div>
+
     </div>
   </div>
 </div>
