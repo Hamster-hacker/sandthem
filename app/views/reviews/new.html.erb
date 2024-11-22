@@ -1,19 +1,39 @@
 <h2>Add a Review</h2>
-<%= form_with model: [@dream, @review], local: true do |form| %>
-  <div class="mb-3">
-    <%= form.label :title %>
-    <%= form.text_field :title, class: "form-control" %>
-  </div>
+<%= simple_form_for [@dream, @review] do |form| %>
+  <div class="d-flex justify-content-center">
+    <div class="card p-4 shadow-sm mb-4 col-12 col-md-10 col-lg-8 dream-form-card">
 
-  <div class="mb-3">
-    <%= form.label :description %>
-    <%= form.text_area :description, class: "form-control" %>
-  </div>
+      <!-- Error Notifications -->
+      <%= form.error_notification %>
+      <%= form.error_notification message: form.object.errors[:base].to_sentence if form.object.errors[:base].present? %>
 
-  <div class="mb-3">
-    <%= form.label :rating %>
-    <%= form.number_field :rating, in: 0..5, step: 0.1, class: "form-control" %>
-  </div>
+      <div class="row">
+        <!-- Left Column -->
+        <div class="col-md-6">
+          <div class="form-group mb-3">
+            <%= form.label :title, class: "form-label" %>
+            <%= form.text_field :title, class: "form-control" %>
+          </div>
+        </div>
 
-  <%= form.submit "Submit Review", class: "btn btn-primary" %>
+        <!-- Right Column -->
+        <div class="col-md-6">
+          <div class="form-group mb-3">
+            <%= form.label :description, class: "form-label" %>
+            <%= form.text_area :description, class: "form-control", rows: 5 %>
+          </div>
+
+          <div class="form-group mb-3">
+            <%= form.label :rating, class: "form-label" %>
+            <%= form.number_field :rating, in: 0..5, step: 0.1, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group mb-4 text-end">
+        <%= link_to "Back to Dream", dream_path(@dream), class: "btn btn-secondary filter-btn-clear" %>
+        <%= form.submit "Submit Review", class: "btn filter-btn" %>
+      </div>
+    </div>
+  </div>
 <% end %>

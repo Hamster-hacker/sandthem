@@ -1,20 +1,36 @@
-<h2 class="text-center m-3 fw-light">Hello Dreamer</h2>
-<div class="registration-form">
+<h2 class="text-center text-light" style="font-family: Alice;">Hello Dreamer</h2>
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs m-3">
-    <%= f.input :email,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: false,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  </div>
+  <div class="d-flex justify-content-center">
+    <div class="card p-4 shadow-sm mb-4 col-12 col-md-8 col-lg-6 dream-form-card">
+      <%= f.error_notification %>
 
-  <div class="form-actions d-grid m-3">
-    <%= f.button :submit, "Log in", class: "btn btn-primary" %>
+      <!-- Form fields in a vertical stack -->
+      <div class="form-inputs">
+        <div class="form-group mb-3">
+          <%= f.input :email,
+                      required: false,
+                      autofocus: true,
+                      input_html: { class: "form-control" } %>
+        </div>
+
+        <div class="form-group mb-3">
+          <%= f.input :password,
+                      required: false,
+                      input_html: { class: "form-control", autocomplete: "current-password" } %>
+        </div>
+
+        <!-- Remember me checkbox and label in the same row -->
+        <div class="form-group mb-3 d-flex align-items-center">
+          <%= f.input :remember_me, as: :boolean, label: "Remember me", input_html: { class: "me-2" } %>
+        </div>
+      </div>
+
+      <!-- Submit button -->
+      <div class="form-actions text-center">
+        <%= link_to "Back", :back, class: "btn btn-secondary filter-btn-clear" %>
+        <%= f.button :submit, "Log in", class: "btn filter-btn" %>
+      </div>
+    </div>
   </div>
 <% end %>
-</div>
 <p class="text-center mb-4 mt-3 t-none">Don't you have an account?<%= render "devise/shared/links" %></p>
