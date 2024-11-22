@@ -23,6 +23,7 @@
           <%= f.input :password,
                       required: true,
                       hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                      hint_html: { style: "color: white;" },
                       input_html: { class: "form-control", autocomplete: "new-password" } %>
         </div>
 
@@ -41,4 +42,4 @@
   </div>
 <% end %>
 
-<p class="text-center mb-4 mt-3 t-none">Already have an account? <%= render "devise/shared/links" %></p>
+<p class="text-center mb-4 mt-3 t-none" style="color: white;">Already have an account? <%= render "devise/shared/links" %></p>
