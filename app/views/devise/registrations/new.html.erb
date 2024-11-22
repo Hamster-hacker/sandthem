@@ -1,38 +1,44 @@
-<h2 class="text-center m-3 fw-light">Let's be a dreamer</h2>
-<div class="registration-form">
-
+<h2 class="text-center text-light" style="font-family: Alice;">Let's be a dreamer</h2>
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+  <div class="d-flex justify-content-center">
+    <div class="card p-4 shadow-sm mb-4 col-12 col-md-8 col-lg-6 dream-form-card">
+      <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <div class="m-3" >
-      <%= f.input :username,
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "username" }%>
-    </div>
-    <div class="m-3" >
-      <%= f.input :email,
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "email" }%>
-    </div>
-    <div class="m-3">
-      <%= f.input :password,
-                  required: true,
-                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                  input_html: { autocomplete: "new-password" }%>
-    </div>
-    <div class="m-3">
-      <%= f.input :password_confirmation,
-                  required: true,
-                  input_html: { autocomplete: "new-password" }%>
-    </div>
+      <!-- Form fields in a vertical stack -->
+      <div class="form-inputs">
+        <div class="form-group mb-3">
+          <%= f.input :username,
+                      required: true,
+                      autofocus: true,
+                      input_html: { class: "form-control" } %>
+        </div>
 
-    <div class="form-actions d-grid m-3">
-      <%= f.button :submit, "Sign up", class: "btn btn-primary" %>
+        <div class="form-group mb-3">
+          <%= f.input :email,
+                      required: true,
+                      input_html: { class: "form-control", autocomplete: "email" } %>
+        </div>
+
+        <div class="form-group mb-3">
+          <%= f.input :password,
+                      required: true,
+                      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                      input_html: { class: "form-control", autocomplete: "new-password" } %>
+        </div>
+
+        <div class="form-group mb-3">
+          <%= f.input :password_confirmation,
+                      required: true,
+                      input_html: { class: "form-control", autocomplete: "new-password" } %>
+        </div>
+      </div>
+
+      <!-- Submit button -->
+      <div class="form-actions text-center">
+        <%= f.button :submit, "Sign up", class: "btn filter-btn" %>
+      </div>
     </div>
-  <% end %>
   </div>
-  <p class= "text-center mb-4 mt-3 t-none">Already have an account? <%= render "devise/shared/links"%></p>
-</div>
+<% end %>
+
+<p class="text-center mb-4 mt-3 t-none">Already have an account? <%= render "devise/shared/links" %></p>
